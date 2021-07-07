@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.utils import timezone
 from ckeditor.fields import RichTextField
+from ckeditor_uploader.fields import RichTextUploadingField
 
 # Create your models here.
 class PublishedManager(models.Model):
@@ -26,13 +27,19 @@ class Post(models.Model):
     title = models.CharField(max_length=250)
     slug = models.SlugField(max_length=250, unique=True)
     author = models.ForeignKey(Author, related_name='blog_post', on_delete=models.CASCADE)
-    body = RichTextField()
+    thumbnail = models.ImageField()
+    body = RichTextUploadingField()
     publish = models.DateTimeField(default=timezone.now)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
     status = models.CharField(max_length=50, choices=STATUS_CHOICES, default='draft')
+    featured = models.BooleanField(default=False)
+    previous_post = models.ForeignKey(
+        'self', related_name='previous', on_delete=models.SET_NULL, blank=True, null=True)
+    next_post = models.ForeignKey(
+        'self', related_name='next', on_delete=models.SET_NULL, blank=True, null=True)
 
-    object  = models.manager() # Default Manager
+    objects  = models.Manager() # Default Manager
     published = PublishedManager() # Custom Manager
 
     class Meta:
