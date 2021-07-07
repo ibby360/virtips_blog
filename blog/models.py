@@ -4,6 +4,12 @@ from django.utils import timezone
 from ckeditor.fields import RichTextField
 
 # Create your models here.
+class PublishedManager(models.Model):
+    def get_queryset(self):
+        return super(PublishedManager, self) .get_queryset()\
+            .filter(status='published')
+
+
 class Author(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     profile_pic = models.ImageField()
@@ -25,6 +31,9 @@ class Post(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
     status = models.CharField(max_length=50, choices=STATUS_CHOICES, default='draft')
+
+    object  = models.manager() # Default Manager
+    published = PublishedManager() # Custom Manager
 
     class Meta:
         ordering = ('-publish',)
