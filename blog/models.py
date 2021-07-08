@@ -1,15 +1,14 @@
 from django.db import models
+from django.urls import reverse 
 from django.contrib.auth.models import User
 from django.utils import timezone
 from ckeditor.fields import RichTextField
 from ckeditor_uploader.fields import RichTextUploadingField
 
 # Create your models here.
-class PublishedManager(models.Model):
+class PublishedManager(models.Manager):
     def get_queryset(self):
-        return super(PublishedManager, self) .get_queryset()\
-            .filter(status='published')
-
+        return super().get_queryset().filter(status='published')
 
 class Author(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE)
@@ -49,3 +48,8 @@ class Post(models.Model):
 
     def __str__(self):
         return self.title
+
+
+    def get_absolute_url(self):
+        return reverse("blog:post_detail", kwargs={"slug": self.slug})
+    
