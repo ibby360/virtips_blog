@@ -18,6 +18,9 @@ class Author(models.Model):
     def __str__(self):
         return self.author.username
 
+    # def get_author_url(self):
+    #     return reverse("blog:author", args=[self.pk])
+
 class Post(models.Model):
     STATUS_CHOICES = (
         ('draft', 'Draft'),
@@ -26,7 +29,7 @@ class Post(models.Model):
     title = models.CharField(max_length=250)
     slug = models.SlugField(max_length=250, unique=True)
     author = models.ForeignKey(Author, related_name='blog_post', on_delete=models.CASCADE)
-    thumbnail = models.ImageField()
+    thumbnail = models.ImageField(upload_to='post')
     body = RichTextUploadingField()
     publish = models.DateTimeField(default=timezone.now)
     created = models.DateTimeField(auto_now_add=True)
@@ -51,5 +54,5 @@ class Post(models.Model):
 
 
     def get_absolute_url(self):
-        return reverse("blog:post_detail", kwargs={"slug": self.slug})
+        return reverse("blog:post_detail", args=[self.slug])
     
