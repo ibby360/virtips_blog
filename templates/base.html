@@ -149,7 +149,7 @@
                     <i class="icon_close"></i>
                 </button>
                 <form class="search-form" action="{% url 'blog:search' %}" method="GET">
-                    <input type="text" name="q" value="" placeholder="What are you looking for?">
+                    <input type="text" name="q" value="" placeholder="What are you looking for?" required>
                     <button type="submit" class="search-btn">search</button>
                 </form>
             </div>
@@ -172,7 +172,9 @@
     <script src="{% static 'js/main.js' %}"></script>
 
     <!-- AOS Scroll -->
-    <script src="{% static 'oas/dist/aos.js' %}"></script>
+    <script src="{% static 'oas/dist/aos.js' %}"></script
+    <!-- JS Reading time  -->
+    <script src="{% static 'js/reading-time.js' %}"></script>
     <script>
         AOS.init({
             easing: 'ease-out-back',   
