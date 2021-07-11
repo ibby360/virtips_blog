@@ -13,11 +13,15 @@
                             <a href="/">Home</a>
                             <span class="arrow_carrot-right"></span> Blog
                         </small>
+                        {% if 'search' in request.path %}
+                        <h3>Search <span>Results:</span></h3>
+                        {% else %}
                         <h3>Category : <span> Travel</span></h3>
                         <p> Lorem ipsum dolor sit amet consectetur adipisicing elit.
                             Incidunt quae explicabo, ducimus necessitatibus eum aut enim modi
                             saepe perspiciatis fugit
                         </p>
+                        {% endif %}
                     </div>
                 </div>
             </div>
