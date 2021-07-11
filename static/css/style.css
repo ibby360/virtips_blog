@@ -2227,12 +2227,15 @@ input:checked + .slider:before {
   padding: 2px 35px;
   line-height: 32px;
   border-radius: 30px;
-  background-color: #cc7900;
+  background-color: var(--mint);
   border: none;
+  text-transform: uppercase;
+  font-weight: 700;
 }
 
 .btn-primary:hover {
-  background-color: #db8606;
+  background-color: #000;
+  color: #fff;
 }
 
 /* -----------------------------
@@ -2556,7 +2559,6 @@ input:checked + .slider:before {
   -webkit-box-shadow: none !important;
           box-shadow: none !important;
 }
-
 .dark .social-icones li a i,
 .dark .post-card-info li,
 .dark .post-single-body blockquote small,
@@ -2610,6 +2612,7 @@ input:checked + .slider:before {
 .dark .widget-form .form-control,
 .dark .search-form input {
   border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #fff;
 }
 
 .dark .widget-form .form-control:hover,
@@ -2620,11 +2623,13 @@ input:checked + .slider:before {
 .dark .search-form input:focus {
   background-color: #1d1d1d;
   border: 1px solid #1d1d1d;
+  color: #fff;
   -webkit-box-shadow: none;
           box-shadow: none;
 }
 
 .dark .categorie:hover,
+.dark .btn-primary:hover,
 .dark .link:hover {
   background-color: #ffffff;
   color: #152035 !important;
