@@ -1,0 +1,331 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+    <!--category-->
+    <section class="categorie-section">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="categorie-title"> 
+                         <small>
+                            <a href="/">Home</a>
+                            <span class="arrow_carrot-right"></span> Blog
+                        </small>
+                        <h3>Category : <span> Travel</span></h3>
+                        <p> Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                            Incidunt quae explicabo, ducimus necessitatibus eum aut enim modi
+                            saepe perspiciatis fugit
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--blog-grid-->
+    <section class="blog-grid">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-8 mt-30">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <!--Post-1-->
+                            
+                            {% for post in posts %}
+                            <div class="post-card" data-aos="fade-right" data-aos-duration="3000">
+                                <div class="post-card-image">
+                                    <a href="{{post.get_absolute_url}}">
+                                        <img src="{{post.thumbnail.url}}" alt="">
+                                    </a>
+                                </div>
+                                <div class="post-card-content">
+                                    <a href="blog-list.html" class="categorie">Travel</a>
+                                    <h5>
+                                        <a href="{{post.get_absolute_url}}">{{post.title}}</a>
+                                    </h5>
+                                    <p>{{post.body | truncatewords:13 | safe}}</p>
+                                    <div class="post-card-info">
+                                        <ul class="list-inline">
+                                            <li>
+                                                <a href="author.html">
+                                                    <img src="{% static 'img/author/1.jpg' %}" alt="">
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="author.html">{{post.author.author}}</a>
+                                            </li>
+                                            <li class="dot"></li>
+                                            <li>{{post.publish | date}}</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %}
+                            <!--/-->
+                        </div>
+                       
+
+                        <!--pagination-->
+                        <div class="col-lg-12">
+                            <div class="pagination mt--10">
+                                
+                                {% if posts.has_other_pages %}
+                                <ul class="list-inline">
+                                    {% if posts.has_previous %}
+                                    <li>
+                                        <a href="?page={{posts.previous_page_number}}">
+                                            <i class="arrow_carrot-2left"></i>
+                                        </a>
+                                    </li>
+                                    {% endif %}
+                                    {% for i in posts.paginator.page_range %}
+                                        {% if posts.number == i %}
+                                        <li class="active">
+                                            <a href="">{{i}}</a>
+                                        </li>
+                                        {% else %}
+                                        <li class="">
+                                            <a href="?page={{i}}">{{i}}</a>
+                                        </li>
+                                        {% endif %}
+                                    {% endfor %}
+                                    {% if posts.has_next %}
+                                    <li>
+                                        <a href="?page={{posts.next_page_number}}">
+                                            <i class="arrow_carrot-2right"></i>
+                                        </a>
+                                    </li>
+                                    {% endif %}
+                                </ul>
+                                {% endif %}
+                            </div>
+                        <!--/-->
+                        </div> 
+                    </div>
+                </div>
+                <div class="col-lg-4 max-width">
+                    <!--widget-latest-posts-->
+                    <div class="widget " data-aos="fade-up" data-aos-duration="3000">
+                        <div class="section-title">
+                            <h5>Latest Posts</h5>
+                        </div>
+                        <ul class="widget-latest-posts">
+                            <li class="last-post">
+                                <div class="image">
+                                    <a href="post-default.html">
+                                        <img src="{% static 'img/latest/1.jpg' %}" alt="...">
+                                    </a>
+                                </div>
+                                <div class="nb">1</div>
+                                <div class="content">
+                                    <p>
+                                        <a href="post-default.html">5 Things I Wish I Knew Before Traveling to Malaysia</a>
+                                    </p>
+                                    <small>
+                                        <span class="icon_clock_alt"></span> January 15, 2021</small>
+                                </div>
+                            </li>
+                            <li class="last-post">
+                                <div class="image">
+                                    <a href="post-default.html">
+                                        <img src="{% static 'img/latest/2.jpg' %}" alt="...">
+                                    </a>
+                                </div>
+                                <div class="nb">2</div>
+                                <div class="content">
+                                    <p>
+                                        <a href="post-default.html">Everything you need to know about visiting the Amazon.</a>
+                                    </p>
+                                    <small>
+                                        <span class="icon_clock_alt"></span> January 15, 2021</small>
+                                </div>
+                            </li>
+                            <li class="last-post">
+                                <div class="image">
+                                    <a href="post-default.html">
+                                        <img src="{% static 'img/latest/3.jpg' %}" alt="...">
+                                    </a>
+                                </div>
+                                <div class="nb">3</div>
+                                <div class="content">
+                                    <p>
+                                        <a href="post-default.html">How to spend interesting vacation after hard work?</a>
+                                    </p>
+                                    <small>
+                                        <span class="icon_clock_alt"></span> January 15, 2021</small>
+                                </div>
+                            </li>
+                            <li class="last-post">
+                                <div class="image">
+                                    <a href="post-default.html">
+                                        <img src="{% static 'img/latest/4.jpg' %}" alt="...">
+                                    </a>
+                                </div>
+                                <div class="nb">4</div>
+                                <div class="content">
+                                    <p>
+                                        <a href="post-default.html">10 Best and Most Beautiful Places to Visit in Italy</a>
+                                    </p>
+                                    <small>
+                                        <span class="icon_clock_alt"></span> January 15, 2021</small>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <!--/-->
+                    
+                    <!--widget-categories-->
+                    <div class="widget" data-aos="fade-up" data-aos-duration="3000">
+                        <div class="section-title">
+                            <h5>Categories</h5>
+                        </div>
+                        <ul class="widget-categories">
+                            <li>
+                                <a href="#" class="categorie">Livestyle</a>
+                                <span class="ml-auto">22 Posts</span>
+                            </li>
+                            <li>
+                                <a href="#" class="categorie">Travel</a>
+                                <span class="ml-auto">18 Posts</span>
+                            </li>
+                            <li>
+                                <a href="#" class="categorie">Food</a>
+                                <span class="ml-auto">14 Posts</span>
+                            </li>
+                            <li>
+                                <a href="#" class="categorie">fashion</a>
+                                <span class="ml-auto">10 Posts</span>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <!--widget-instagram-->
+                    <div class="widget" data-aos="fade-up" data-aos-duration="3000">
+                        <div class="section-title">
+                            <h5>Instagram</h5>
+                        </div>
+                        <ul class="widget-instagram">
+                            <li>
+                                <a class="image" href="#">
+                                    <img src="{% static 'img/instagram/1.jpg' %}" alt="">
+                                </a>
+                            </li>
+                            <li>
+                                <a class="image" href="#">
+                                    <img src="{% static 'img/instagram/2.jpg' %}" alt="">
+                                </a>
+                            </li>
+                            <li>
+                                <a class="image" href="#">
+                                    <img src="{% static 'img/instagram/3.jpg' %}" alt="">
+                                </a>
+                            </li>
+                            <li>
+                                <a class="image" href="#">
+                                    <img src="{% static 'img/instagram/4.jpg' %}" alt="">
+                                </a>
+                            </li>
+                            <li>
+                                <a class="image" href="#">
+                                    <img src="{% static 'img/instagram/5.jpg' %}" alt="">
+                                </a>
+                            </li>
+                            <li>
+                                <a class="image" href="#">
+                                    <img src="{% static 'img/instagram/6.jpg' %}" alt="">
+                                </a>
+                            </li>
+                        </ul>
+                    
+                    </div>
+                    <!--widget-tags-->
+                    <div class="widget" data-aos="fade-up" data-aos-duration="3000">
+                        <div class="section-title">
+                            <h5>Tags</h5>
+                        </div>
+                        <div class="widget-tags">
+                            <ul class="list-inline">
+                                <li>
+                                    <a href="blog-grid.html">Travel</a>
+                                </li>
+                                <li>
+                                    <a href="blog-grid.html">Nature</a>
+                                </li>
+                                <li>
+                                    <a href="blog-grid.html">tips</a>
+                                </li>
+                                <li>
+                                    <a href="blog-grid.html">forest</a>
+                                </li>
+                                <li>
+                                    <a href="blog-grid.html">beach</a>
+                                </li>
+                                <li>
+                                    <a href="blog-grid.html">fashion</a>
+                                </li>
+                                <li>
+                                    <a href="blog-grid.html">livestyle</a>
+                                </li>
+                                <li>
+                                    <a href="blog-grid.html">healty</a>
+                                </li>
+                                <li>
+                                    <a href="blog-grid.html">food</a>
+                                </li>
+                                <li>
+                                    <a href="blog-grid.html">breakfast</a>
+                                </li>
+                    
+                            </ul>
+                        </div>
+                    </div>
+                    <!--/-->
+                    
+                </div>
+            </div>
+        </div>
+    </section><!--/-->
+
+    <!--newslettre-->
+    <section class="newslettre">
+        <div class="container-fluid">
+            <div class="newslettre-width text-center">
+                <div class="newslettre-info">
+                    <h5>Subscribe to our Newslatter</h5>
+                    <p> Sign up for free and be the first to get notified about new posts. </p>
+                </div>
+                <form action="#" class="newslettre-form">
+                    <div class="form-flex">
+                        <div class="form-group">
+                            <input type="email" class="form-control" placeholder="Your email adress" required="required">
+                        </div>
+                        <button class="submit-btn" type="submit">Subscribe</button>
+                    </div>
+                </form>
+                <div class="social-icones">
+                    <ul class="list-inline">
+                        <li>
+                            <a href="#">
+                                <i class="fab fa-facebook-f"></i>Facebook</a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="fab fa-twitter"></i>Twitter </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="fab fa-instagram"></i>Instagram </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="fab fa-youtube"></i>Youtube</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+{% endblock content %}
