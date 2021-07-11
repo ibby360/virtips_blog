@@ -18,9 +18,6 @@ class Author(models.Model):
     def __str__(self):
         return self.author.username
 
-    # def get_author_url(self):
-    #     return reverse("blog:author", args=[self.pk])
-
 class Post(models.Model):
     STATUS_CHOICES = (
         ('draft', 'Draft'),
