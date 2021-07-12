@@ -14,7 +14,11 @@
     <link rel="icon" sizes="16x16" href="{% static 'img/favicon.png' %}">
 
     <!-- Title -->
-    <title> VirTips </title>
+    <title> 
+    {% block title %}
+        VirTips
+    {% endblock title %}
+    </title>
 
     <!-- Font Google -->
     <link href="https://fonts.googleapis.com/css?family=Muli:300,400,500,600,700,800,900&amp;display=swap" rel="stylesheet">
@@ -60,13 +64,13 @@
                         <a class="nav-link" href="{% url 'blog:post_list' %}"> Articles </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="about.html"> About </a>
+                        <a class="nav-link" href="{% url 'about' %}"> About </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="contact.html"> Contact </a>
+                        <a class="nav-link" href="{% url 'contact' %}"> Contact </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="login.html"> Login </a>
+                        <a class="nav-link" href="{% url 'login' %}"> Login </a>
                     </li>
                 </ul>
             </div>

@@ -1,0 +1,339 @@
+{% extends 'base.html' %}
+{% block title %}{{post.title}} | VirTips {% endblock title %}
+{% load static %}
+{% block content %}
+  
+    <!--post-default-->
+    <section class="section pt-55 ">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10 offset-lg-1 mb-20">
+                    <!--Post-single-->
+                    <div class="post-single">
+                        <div class="post-single-image">
+                            <img src="{{post.thumbnail.url}}" alt="">
+                        </div>
+                        <div class="post-single-content">
+                            <a href="blog-grid.html" class="categorie">travel</a> 
+                            <h4>{{post.title}}</h4>
+                            <div class="post-single-info">
+                                <ul class="list-inline">
+                                    <li><a href="author.html"><img src="{% static 'img/author/1.jpg' %}" alt=""></a></li>
+                                    <li><a href="author.html">{{post.author.author.username}}</a> </li>
+                                    <li class="dot"></li>
+                                    <li>{{post.publish | date}}</li>
+                                    <li class="dot"></li>
+                                    <li><span id="time"></span> minute read</li>
+                                    <li class="dot"></li>
+                                    <li>3 comments</li>
+                                </ul>
+                            </div>
+                        </div>
+                  
+                        <div class="post-single-body">
+                            <div id="article">
+                                {{post.body | safe}}
+                            </div>
+
+                        <div class="post-single-footer">
+                            <div class="tags">
+                                <ul class="list-inline">
+                                    <li>
+                                        <a href="blog-grid.html">Travel</a>
+                                    </li>
+                                    <li>
+                                        <a href="blog-grid.html">Nature</a>
+                                    </li>
+                                    <li>
+                                        <a href="blog-grid.html">tips</a>
+                                    </li>
+                                    <li>
+                                        <a href="blog-grid.html">forest</a>
+                                    </li>
+                                    <li>
+                                        <a href="blog-grid.html">beach</a>
+                                    </li>
+                                
+                                </ul>
+                            </div>
+                            <div class="social-media">
+                                <ul class="list-inline">
+                                    <li>
+                                        <a href="#" class="color-facebook">
+                                            <i class="fab fa-facebook"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="color-instagram">
+                                            <i class="fab fa-instagram"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="color-twitter">
+                                            <i class="fab fa-twitter"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="color-youtube">
+                                            <i class="fab fa-youtube"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="color-pinterest">
+                                            <i class="fab fa-pinterest"></i>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>                           
+                        </div>
+                    </div> <!--/-->
+                    
+                    <div class="row">
+                        <div class="col-lg-12">
+                        <!--widget-author-->
+                        <div class="widget">
+                            <div class="widget-author">
+                                <a href="author.html" class="image">
+                                    <img src="{% static 'img/author/1.jpg' %}" alt="">
+                                </a>
+                                <h6>
+                                    <span>Hi, I'm {{post.author.author.username}}</span>
+                                </h6>
+                                <p>
+                                I'm David Smith, husband and father , I love Photography,travel and nature. I'm working as a writer and blogger with
+                                experience of 5 years until now.</p>
+                        
+                        
+                                <div class="social-media">
+                                    <ul class="list-inline">
+                                        <li>
+                                            <a href="#" class="color-facebook">
+                                                <i class="fab fa-facebook"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="color-instagram">
+                                                <i class="fab fa-instagram"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="color-twitter">
+                                                <i class="fab fa-twitter"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="color-youtube">
+                                                <i class="fab fa-youtube"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="color-pinterest">
+                                                <i class="fab fa-pinterest"></i>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <!--/-->
+                        </div>
+                    </div>
+                   
+                    <!--next & previous-posts-->
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="widget">
+                                <div class="widget-next-post">
+                                    <div class="small-post">
+                                        <div class="image">
+                                            <a href="post-default.html">
+                                                <img src="assets/img/latest/1.jpg" alt="...">
+                                            </a>
+                                        </div>
+                                        <div class="content">
+                                            <div>
+                                                <a class="link" href="post-default.html">
+                                                    <i class="arrow_left"></i>Preview post</a>
+                                            </div>
+                                            <a href="post-default.html">7 Healty Dinner Recipes for a Date Night at Home</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="widget">
+                                <div class="widget-previous-post">
+                                    <div class="small-post">
+                                        <div class="image">
+                                            <a href="post-default.html">
+                                                <img src="assets/img/blog/2.jpg" alt="...">
+                                            </a>
+                                        </div>
+                                        <div class="content">
+                                            <div>
+                                                <a class="link" href="post-default.html">
+                                                    <span> Next post</span>
+                                                    <span class="arrow_right"></span>
+                                                </a>
+                                            </div>
+                                            <a href="post-default.html">How to Choose Outfits for Work for woman and men</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--/-->
+
+                    <!--widget-comments-->
+                    <div class="widget mb-50">
+                        <div class="title">
+                            <h5>3 Comments</h5>
+                        </div>
+                        <ul class="widget-comments">
+                            <li class="comment-item">
+                                <img src="assets/img/user/1.jpg" alt="">
+                                <div class="content">
+                                    <ul class="info list-inline">
+                                        <li>Mohammed Ali</li>
+                                        <li class="dot"></li>
+                                        <li> January 15, 2021</li>
+                                    </ul>
+                                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Repellendus at doloremque adipisci eum placeat quod
+                                        non fugiat aliquid sit similique!
+                                    </p>
+                                    <div>
+                                        <a href="#" class="link">
+                                            <i class="arrow_back"></i> Reply</a>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="comment-item">
+                                <img src="assets/img/author/1.jpg" alt="">
+                                <div class="content">
+                                    <ul class="info list-inline">
+                                        <li>Simon Albert</li>
+                                        <li class="dot"></li>
+                                        <li> January 15, 2021</li>
+                                    </ul>
+                        
+                                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Repellendus at doloremque adipisci eum placeat quod
+                                        non fugiat aliquid sit similique!
+                                    </p>
+                                    <div>
+                                        <a href="#" class="link">
+                                            <i class="arrow_back"></i> Reply</a>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="comment-item">
+                                <img src="assets/img/user/2.jpg" alt="">
+                                <div class="content">
+                        
+                                    <ul class="info list-inline">
+                                        <li>Adam bobly</li>
+                                        <li class="dot"></li>
+                                        <li> January 15, 2021</li>
+                                    </ul>
+                        
+                                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Repellendus at doloremque adipisci eum placeat quod
+                                        non fugiat aliquid sit similique!
+                                    </p>
+                        
+                                    <div>
+                                        <a href="#" class="link">
+                                            <i class="arrow_back"></i> Reply</a>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                       <!--Leave-comments-->
+                        <div class="title">
+                            <h5>Leave a Reply</h5>
+                        </div>
+                        <form class="widget-form" action="#" method="POST" id="main_contact_form">
+                            <p>Your email adress will not be published ,Requied fileds are marked*.</p>
+                            <div class="alert alert-success contact_msg" style="display: none" role="alert">
+                                Your message was sent successfully.
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <textarea name="message" id="message" cols="30" rows="5" class="form-control" placeholder="Message*" required="required"></textarea>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <input type="text" name="name" id="name" class="form-control" placeholder="Name*" required="required">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <input type="email" name="email" id="email" class="form-control" placeholder="Email*" required="required">
+                                    </div>
+                                </div>
+                                <div class="col-12 mb-20">
+                                    <div class="form-group">
+                                        <input type="text" name="website" id="website" class="form-control" placeholder="website">
+                                    </div>
+                                    <label>
+                                        <input name="name" type="checkbox" value="1" required="required"> 
+                                       <span>save my name , email and website in this browser for the next time I comment.</span>                                   
+                                    </label>
+                                </div>
+                                <div class="col-12">
+                                    <button type="submit" name="submit" class="btn-custom">
+                                        Post Comment
+                                    </button>
+                                </div> 
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section><!--/-->
+
+    
+    <!--newslettre-->
+    <section class="newslettre">
+        <div class="container-fluid">
+            <div class="newslettre-width text-center">
+                <div class="newslettre-info">
+                    <h5>Subscribe to our Newslatter</h5>
+                    <p> Sign up for free and be the first to get notified about new posts. </p>
+                </div>
+                <form action="#" class="newslettre-form">
+                    <div class="form-flex">
+                        <div class="form-group">
+                            <input type="email" class="form-control" placeholder="Your email adress" required="required">
+                        </div>
+                        <button class="submit-btn" type="submit">Subscribe</button>
+                    </div>
+                </form>
+                <div class="social-icones">
+                    <ul class="list-inline">
+                        <li>
+                            <a href="#">
+                                <i class="fab fa-facebook-f"></i>Facebook</a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="fab fa-twitter"></i>Twitter </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="fab fa-instagram"></i>Instagram </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="fab fa-youtube"></i>Youtube</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+{% endblock content %}
