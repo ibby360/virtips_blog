@@ -4,6 +4,7 @@ from django.contrib.auth.models import User
 from django.utils import timezone
 from ckeditor.fields import RichTextField
 from ckeditor_uploader.fields import RichTextUploadingField
+from taggit.managers import TaggableManager 
 
 # Create your models here.
 class PublishedManager(models.Manager):
@@ -25,6 +26,7 @@ class Post(models.Model):
     )
     title = models.CharField(max_length=250)
     slug = models.SlugField(max_length=250, unique=True)
+    tags = TaggableManager()
     author = models.ForeignKey(Author, related_name='blog_post', on_delete=models.CASCADE)
     thumbnail = models.ImageField(upload_to='post')
     body = RichTextUploadingField()
