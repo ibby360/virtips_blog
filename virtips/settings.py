@@ -41,8 +41,10 @@ INSTALLED_APPS = [
 
     # Local apps
     'blog',
+    'auth',
     'ckeditor',
     'ckeditor_uploader',
+    'taggit',
 ]
 
 MIDDLEWARE = [
