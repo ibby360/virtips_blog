@@ -1,5 +1,7 @@
-from django.shortcuts import render, get_object_or_404
+from django.urls import reverse
+from django.shortcuts import render, get_object_or_404, HttpResponseRedirect 
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
+from django.core.exceptions import ObjectDoesNotExist
 from blog.models import Post, Author
 from django.db.models import Q
 from taggit.models import Tag
@@ -33,8 +35,17 @@ def post_list(request, tag_slug=None):
 
 def post_detail(request, post):
     post = get_object_or_404(Post, slug=post, status='published')
+    try:
+        previous_post = post.get_previous_by_publish()
+        next_post = post.get_next_by_publish()
+    except ObjectDoesNotExist:
+        previous_post = None
+        next_post = post.get_next_by_publish()
+
     context = {
-        'post': post
+        'post': post,
+        'previous_post': previous_post,
+        'next_post': next_post,
     }
     return render(request, 'blog/post.html', context)
 
