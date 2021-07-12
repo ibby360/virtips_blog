@@ -2,23 +2,32 @@ from django.shortcuts import render, get_object_or_404
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from blog.models import Post, Author
 from django.db.models import Q
+from taggit.models import Tag
 
 # Create your views here.
 
-def post_list(request):
+def post_list(request, tag_slug=None):
+    tags = Tag.objects.all()
     posts = Post.published.all()
+    tag = None
+    if tag_slug:
+        tag = get_object_or_404(Tag, slug=tag_slug)
+        posts = posts.filter(tags__in=[tag])
+
     paginator = Paginator(posts, 9)
     page = request.GET.get('page')
     paged_posts = paginator.get_page(page)
     try:
-        paginated_queryset = paginator.page(page)
+        paged_posts = paginator.page(page)
     except PageNotAnInteger:
-        paginated_queryset = paginator.page(1)
+        paged_posts = paginator.page(1)
     except EmptyPage:
-        paginated_queryset = paginator.page(paginator.num_pages)
+        paged_posts = paginator.page(paginator.num_pages)
         
     context = {
-        'posts': paged_posts
+        'posts': paged_posts,
+        'tags': tags,
+        'tag': tag,
     }
     return render(request, 'blog/blog.html', context)
 
