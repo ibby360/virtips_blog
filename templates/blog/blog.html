@@ -52,7 +52,7 @@
                                     <h5>
                                         <a href="{{post.get_absolute_url}}">{{post.title}}</a>
                                     </h5>
-                                    <p>{{post.body | truncatewords:13 | safe}}</p>
+                                    <p>{{post.body | truncatewords_html:15|safe | linebreaks }}</p>
                                     <div class="post-card-info">
                                         <ul class="list-inline">
                                             <li>
@@ -255,7 +255,7 @@
 
                         <div class="widget-tags">
                             <ul class="list-inline">
-                                {% for tag in tags %}
+                                {% for tag in post.tags.all %}
                                 <li>
                                     <a href="{% url 'blog:post_list_by_tag' tag.slug %}">{{tag}}</a>
                                 </li>
