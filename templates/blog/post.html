@@ -145,7 +145,7 @@
                                                 <a class="link" href="{{previous_post.get_absolute_url}}">
                                                     <i class="arrow_left"></i>Preview post</a>
                                             </div>
-                                            <a href="{{previous_post.get_absolute_url}}">{{previous_post.title | truncatewords:10}}</a>
+                                            <a href="{{previous_post.get_absolute_url}}">{{previous_post.title | truncatewords_html:10}}</a>
                                         </div>
                                     </div>
                                 </div>
@@ -167,7 +167,7 @@
                                                     <span class="arrow_right"></span>
                                                 </a>
                                             </div>
-                                            <a href="{{next_post.get_absolute_url}}">{{next_post.title | truncatewords:10}}</a>
+                                            <a href="{{next_post.get_absolute_url}}">{{next_post.title | truncatewords_html:10}}</a>
                                         </div>
                                     </div>
                                 </div>
@@ -325,5 +325,10 @@
             </div>
         </div>
     </section>
+    <script>
+        let div = document.getElementById('article');
+        let unorderedList = div.getElementsByTagName('ul')[0];
+        unorderedList.classList.add('list');
+    </script>
     
 {% endblock content %}
