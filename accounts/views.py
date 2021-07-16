@@ -17,6 +17,8 @@ def register(request):
             user = Account.objects.create_user(
                 username=username, email=email, password=password)
             user.save()
+            return redirect('login')
+
     else:
         form = RegistrationForm()
 
