@@ -17,11 +17,11 @@
                         {% if 'search' in request.path %}
                         <h3>Search <span>Results:</span></h3>
                         {% else %}
-                        <h3>Category : <span> Travel</span></h3>
+                        <!-- <h3>Category : <span> Travel</span></h3>
                         <p> Lorem ipsum dolor sit amet consectetur adipisicing elit.
                             Incidunt quae explicabo, ducimus necessitatibus eum aut enim modi
                             saepe perspiciatis fugit
-                        </p>
+                        </p> -->
                         {% endif %}
                     </div>
                 </div>
@@ -37,7 +37,7 @@
                     <div class="row">
                         <div class="col-lg-12">
                             <!--Post-1-->
-                            
+                            {% if posts %}
                             {% for post in posts %}
                             <div class="post-card" data-aos="fade-right" data-aos-duration="3000">
                                 <div class="post-card-image">
@@ -46,9 +46,7 @@
                                     </a>
                                 </div>
                                 <div class="post-card-content">
-                                    {% for tag in post.tags.all %}
-                                    <a href="{% url 'blog:post_list_by_tag' tag.slug %}" class="categorie">{{tag}}</a>
-                                    {% endfor %}
+                                    <a href="#" class="categorie">{{post.category}}</a>
                                     <h5>
                                         <a href="{{post.get_absolute_url}}">{{post.title}}</a>
                                     </h5>
@@ -56,20 +54,25 @@
                                     <div class="post-card-info">
                                         <ul class="list-inline">
                                             <li>
-                                                <a href="author.html">
-                                                    <img src="{% static 'img/author/1.jpg' %}" alt="">
+                                                <a href="{{post.get_author_url}}">
+                                                    <img src="{{post.author.profile_pic.url}}" alt="">
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="author.html">{{post.author.author}}</a>
+                                                <a href="/">{{post.author.author}}</a>
                                             </li>
                                             <li class="dot"></li>
-                                            <li>{{post.publish | date}}</li>
+                                            <li><span class="icon_clock_alt pr-2"></span>{{post.publish | date}}</li>
                                         </ul>
                                     </div>
                                 </div>
                             </div>
                             {% endfor %}
+                            {% else %}
+                            <div class="text-center">
+                                <h2>No <span style="color: #4cb69f;">post</span> Found</h2>
+                            </div>
+                            {% endif %}
                             <!--/-->
                         </div>
                        
@@ -189,22 +192,12 @@
                             <h5>Categories</h5>
                         </div>
                         <ul class="widget-categories">
+                            {% for category in links %}
                             <li>
-                                <a href="#" class="categorie">Livestyle</a>
-                                <span class="ml-auto">22 Posts</span>
+                                <a href="{{category.get_absolute_url}}" class="categorie">{{category.category_name}}</a>
+                                <span class="ml-auto">{{categorie_count}} Posts</span>
                             </li>
-                            <li>
-                                <a href="#" class="categorie">Travel</a>
-                                <span class="ml-auto">18 Posts</span>
-                            </li>
-                            <li>
-                                <a href="#" class="categorie">Food</a>
-                                <span class="ml-auto">14 Posts</span>
-                            </li>
-                            <li>
-                                <a href="#" class="categorie">fashion</a>
-                                <span class="ml-auto">10 Posts</span>
-                            </li>
+                            {% endfor %}
                         </ul>
                     </div>
                     
@@ -255,7 +248,7 @@
 
                         <div class="widget-tags">
                             <ul class="list-inline">
-                                {% for tag in post.tags.all %}
+                                {% for tag in tags.all %}
                                 <li>
                                     <a href="{% url 'blog:post_list_by_tag' tag.slug %}">{{tag}}</a>
                                 </li>
