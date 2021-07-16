@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% block title %}Login | VirTips {% endblock title %}
 {% block content %}
 
     <!--Login-->
@@ -8,8 +9,9 @@
                 <div class="section-title">
                     <h5>Login</h5>
                 </div>
-                <form  action="#" class="sign-form widget-form " method="post">
-                        <div class="form-group">
+                <form  action="{% url 'login' %}" class="sign-form widget-form " method="POST">
+                    {% csrf_token %}
+                    <div class="form-group">
                         <input type="text" class="form-control" placeholder="Username*" name="username" value="">
                     </div>
                     <div class="form-group">
@@ -33,7 +35,6 @@
         </div>
     </section>        
 
-    <!--newslettre-->
-    {% include 'newsletter.html' %}
     
+
 {% endblock content %}
