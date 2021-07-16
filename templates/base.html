@@ -1,3 +1,4 @@
+{% load active_link_tags %}
 {% load static %}
 
 <!doctype html>
@@ -57,25 +58,26 @@
             <!--navbar-collapse-->
             <div class="collapse navbar-collapse" id="main_nav">
                 <ul class="navbar-nav ml-auto mr-auto" id="navMenu">
+                <!--  THIS NEED TO BE FIXED -->
                     <li class="nav-item">
-                        <a class="nav-link active" href="/"> Home </a>
+                        <a class="nav-link {% active_link 'home' 'active' %}" href="{% url 'home' %}"> Home </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'blog:post_list' %}"> Articles </a>
+                        <a class="nav-link {% active_link 'blog:post_list' 'active' %}" href="{% url 'blog:post_list' %}"> Articles </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'about' %}"> About </a>
+                        <a class="nav-link {% active_link 'about' 'active' %}" href="{% url 'about' %}"> About </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'contact' %}"> Contact </a>
+                        <a class="nav-link {% active_link 'contact' 'active' %}" href="{% url 'contact' %}"> Contact </a>
                     </li>
                     {% if user.is_authenticated %}
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'logout' %}"> Logout </a>
+                        <a class="nav-link {% active_link 'logout' 'active' %}" href="{% url 'logout' %}"> Logout </a>
                     </li>
                     {% else %}
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'login' %}"> Login </a>
+                        <a class="nav-link {% active_link 'login' 'active' %}" href="{% url 'login' %}?next={{request.path}}"> Login </a>
                     </li>
                     {% endif %}
                 </ul>
