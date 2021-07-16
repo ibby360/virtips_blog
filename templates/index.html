@@ -7,14 +7,15 @@
     <!--carousel-hero-->
     <section class="section carousel-hero">
         <div class="owl-carousel">
-            <div class="hero d-flex align-items-center " style="background-image: url({% static 'img/hero/2.jpg' %})">
+            {% for post in featured %}
+            <div class="hero d-flex align-items-center " style="background-image: url({{post.thumbnail.url}})">
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-lg-8 offset-lg-2 col-md-10 offset-md-1">
                             <div class="hero-content">
                                 <a href="blog.html" class="categorie">travel</a>
                                 <h2>
-                                    <a href="post.html">10 Best and Most Beautiful Places to Visit in Italy </a>
+                                    <a href="{{post.get_absolute_url}}">{{post.title}}</a>
                                 </h2>
             
                                 <div class="post-card-info">
@@ -25,10 +26,10 @@
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="author.html">David Smith</a>
+                                            <a href="author.html">{{post.author.author}}</a>
                                         </li>
                                         <li class="dot"></li>
-                                        <li>January 15, 2021</li>
+                                        <li>{{post.publish | date}}</li>
                                         <li class="dot"></li>
                                         <li>10 Min Reads</li>
                                     </ul>
@@ -38,109 +39,10 @@
                     </div>
                 </div>
             </div>
-            <div class="hero d-flex align-items-center" style="background-image: url({% static 'img/hero/1.jpg' %})">
-                 <div class="container-fluid">
-                     <div class="row">
-                         <div class="col-lg-8 offset-lg-2 col-md-10 offset-md-1">
-                            <div class="hero-content">
-                                <a href="blog.html" class="categorie">Livestyle</a>
-                                <h2><a href="post.html">Top 10 Fashion Trends from Spring/Summer 2021 Fashion Weeks </a></h2>
-                                <div class="post-card-info">
-                                    <ul class="list-inline">
-                                        <li><a href="author.html"><img src="{% static 'img/author/1.jpg' %}" alt=""></a></li>
-                                        <li><a href="author.html">David smith</a></li>
-                                        <li class="dot"></li>
-                                        <li>January 12, 2021</li>
-                                        <li class="dot"></li>
-                                        <li>10 Min Reads</li>
-                                    </ul>
-                                </div> 
-                            </div>
-                         </div>
-                     </div>
-                 </div>
-            </div> 
-            <div class="hero d-flex align-items-center " style="background-image: url({% static 'img/hero/3.jpg' %})">
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-lg-8 offset-lg-2 col-md-10 offset-md-1">
-                            <div class="hero-content">
-                                <a href="blog.html" class="categorie">Travel</a>
-                                <h2>
-                                    <a href="post.html">Top 10 Forests That Every Nature Lover Must Visit</a>
-                                </h2>
-                          
-                                <div class="post-card-info">
-                                    <ul class="list-inline">
-                                        <li><a href="author.html"><img src="{% static 'img/author/1.jpg' %}" alt=""></a></li>
-                                        <li><a href="author.html">David Smith</a></li>
-                                        <li class="dot"></li>
-                                        <li>January 15, 2021</li>
-                                        <li class="dot"></li>
-                                        <li>10 Min Reads</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            {% endfor %}
         </div>
     </section>
     <!--/-->
-
-    
-    <!--grid-layout-->
-    <section class="section">
-        <div class="container-fluid grid-container">
-            <div class="mb-5 text-start" data-aos="fade-right">
-                <h3>Popular Posts</h4>
-                <p>Don't miss to check out our most popular posts</p>
-            </div>
-            <div class="row">
-                
-                {% for post in featured %}
-                    
-                <div class="col-lg-6 col-md-6">
-                    <!--Post-1-->
-                    <div class="post-card" data-aos="fade-right" data-aos-duration="3000">
-                        <div class="post-card-image">
-                            <a href="{{post.get_absolute_url}}">
-                                <img src="{{post.thumbnail.url}}" alt="">
-                            </a>
-        
-                        </div>
-                        <div class="post-card-content">
-                            <a href="blog.html" class="categorie">Food</a>
-                            <h5>
-                                <a href="{{post.get_absolute_url}}">{{post.title}} </a>
-                            </h5>
-                            <p>{{post.body | truncatewords:13 | safe}}</p>
-                            <div class="post-card-info">
-                                <ul class="list-inline">
-                                    <li>
-                                        <a href="about.html">
-                                            <img src="{% static 'img/author/1.jpg' %}" alt="">
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="about.html">{{post.author.author}}</a>
-                                    </li>
-                                    <li class="dot"></li>
-                                    <li>{{post.publish | date}}</li>
-                                    <li class="dot"></li>
-                                    <li><span id="time"></span> minute read</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <!--/-->
-                </div>
-                {% endfor %}
-                
-            </div>
-        </div>
-    </section>
 
     <!--masonry-layout-->
     <section class="mt-40 masonry-layout">
@@ -167,7 +69,7 @@
                                     <h5>
                                         <a href="{{post.get_absolute_url}}">{{post.title}}</a>
                                     </h5>
-                                    <p>{{post.body | truncatewords:13 | safe}}</p>
+                                    <p>{{post.body | truncatewords_html:13|safe}}</p>
                                     <div class="post-card-info">
                                         <ul class="list-inline">
                                             <li>
