@@ -47,6 +47,7 @@
     <!--masonry-layout-->
     <section class="mt-40 masonry-layout">
         <div class="container-fluid">
+        {% if posts %}
             <div class="mb-20 text-start">
                 <h3>Recent Posts</h4>
             </div>
@@ -99,6 +100,11 @@
                     </div>
                 </div>
             </div>
+            {% else %}
+            <div class="text-center my-5">
+                <h2>No Post Available for Now.</h2>
+            </div>
+        {% endif %}
         </div>
     </section>
     <!--/-->
