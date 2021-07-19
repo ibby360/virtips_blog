@@ -11,13 +11,11 @@
                     <!--widget-author-->
                     <div class="widget-author inner-width">
                         <a href="author.html" class="image">
-                            <img src="assets/img/author/1.jpg" alt="">
+                            <img src="{{author.profile_pic.url}}" alt="">
                         </a>
-                        <h6><span>Hi, I'm David Smith</span></h6>
-                        <div class="link">13 Articles</div>
-                        <p> I'm David Smith, husband and father , I love Photography,travel 
-                            and nature. I'm working as a writer
-                            and blogger with experience of 5 years until now.
+                        <h6><span>Hi, I'm {{author.author}}</span></h6>
+                        <div class="link">{{post_count}} Articles</div>
+                        <p> {{author.description}}
                         </p>
                         
                         <div class="social-media">
@@ -63,277 +61,39 @@
                     <!--cards-->
                     <div class="card-columns">
                         <!--Post-1-->
+                        {% for post in posts %}
                         <div class="card">
                             <div class="post-card post-full">
                                 <div class="post-card-image">
-                                    <a href="post.html"><img src="assets/img/blog/27.jpg" alt=""></a>
+                                    <a href="{{post.get_absolute_url}}"><img src="{{post.thumbnail.url}}" alt=""></a>
                                 </div>
                                 <div class="post-card-content">
-                                    <a href="blog.html" class="categorie">Livestyle</a>
+                                    <a href="{{post.get_absolute_url}}" class="categorie">{{post.category}}</a>
                                     <h5>
-                                        <a href="post.html">20+ Cute Girly Outfits to Buy for the First Day of Winter</a>
+                                        <a href="{{post.get_absolute_url}}">{{post.title}}</a>
                                     </h5>
-                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit quam atque ipsa laborum sunt distinctio...
+                                    <p>{{post.body | truncatewords_html:15|safe}}
                                     </p>
                                     <div class="post-card-info">
                                         <ul class="list-inline">
                                             <li>
                                                 <a href="author.html">
-                                                    <img src="assets/img/author/1.jpg" alt="">
+                                                    <img src="{{post.author.profile_pic.url}}" alt="">
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="author.html">David Smith</a>
+                                                <a href="author.html">{{post.author.author}}</a>
                                             </li>
                                             <li class="dot"></li>
-                                            <li>January 15, 2021</li>
+                                            <li>{{post.publish | date}}</li>
                                         </ul>
                                     </div>
                                 </div>
                             </div>
                             <!--/-->
                         </div>
-                        <!--Post-2-->
-                        <div class="card">
-                            <div class="post-card post-full">
-                                <div class="post-card-image">
-                                    <a href="post.html">
-                                    <img src="assets/img/blog/16.jpg" alt="">
-                                    </a>
-                                </div>
-                                <div class="post-card-content">
-                                    <a href="blog.html" class="categorie">fashion</a>
-                                    <h5>
-                                        <a href="post.html">Top 10 Fashion Trends from Spring/Summer 2021 Fashion Weeks</a>
-                                    </h5>
-                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit quam atque ipsa laborum sunt distinctio...
-                                    </p>
-                                    <div class="post-card-info">
-                                        <ul class="list-inline">
-                                            <li>
-                                                <a href="author.html">
-                                                    <img src="assets/img/author/1.jpg" alt="">
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="author.html">David Smith</a>
-                                            </li>
-                                            <li class="dot"></li>
-                                            <li>January 15, 2021</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            <!--/-->
-                        </div>
-        
-                        <!--Post-3-->
-                        <div class="card">
-                            <div class="post-card post-full">
-                                <div class="post-card-image post-full">
-                                    <a href="post.html">
-                                     <img src="assets/img/blog/14.jpg" alt="">
-                                    </a>
-                                </div>
-                                <div class="post-card-content">
-                                    <a href="blog.html" class="categorie"> Livestyle</a>
-                                    <h5>
-                                        <a href="post.html">How to Choose Outfits for Work for woman and men</a>
-                                    </h5>
-                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit quam atque ipsa laborum sunt distinctio...
-                                    </p>
-                                    <div class="post-card-info">
-                                        <ul class="list-inline">
-                                            <li>
-                                                <a href="author.html">
-                                                    <img src="assets/img/author/1.jpg" alt="">
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="author.html">David Smith</a>
-                                            </li>
-                                            <li class="dot"></li>
-                                            <li>January 15, 2021</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!--/-->
-        
-                        <!--Post-4-->
-                        <div class="card">
-                            <div class=" post-card post-full">
-                                <div class="post-card-image">
-                                    <a href="post.html">
-                                     <img src="assets/img/blog/6.jpg" alt="">
-                                    </a>
-                                </div>
-                                <div class="post-card-content">
-                                    <a href="blog.html" class="categorie">travel</a>
-                                    <h5>
-                                        <a href="post.html">How to wear when you travel to Montain and Forest?</a>
-                                    </h5>
-                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit quam atque ipsa laborum sunt distinctio...
-                                    </p>
-                                    <div class="post-card-info">
-                                        <ul class="list-inline">
-                                            <li>
-                                                <a href="author.html">
-                                                    <img src="assets/img/author/1.jpg" alt="">
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="author.html">David Smith</a>
-                                            </li>
-                                            <li class="dot"></li>
-                                            <li>January 15, 2021</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!--/-->
-        
-                        <!--Post-5-->
-                        <div class="card">
-                            <div class="post-card post-full">
-                                <div class="post-card-image"> 
-                                    <a href="post.html">
-                                    <img src="assets/img/blog/2.jpg" alt="">
-                                    </a>
-                                </div>
-                                <div class="post-card-content">
-                                    <a href="blog.html" class="categorie"> Livestyle</a>
-                                    <h5>
-                                        <a href="post.html">How reading rewires your brain for higher intelligence</a>
-                                    </h5>
-                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit quam atque ipsa laborum sunt distinctio...
-                                    </p>
-                                    <div class="post-card-info">
-                                        <ul class="list-inline">
-                                            <li>
-                                                <a href="author.html">
-                                                    <img src="assets/img/author/1.jpg" alt="">
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="author.html">David Smith</a>
-                                            </li>
-                                            <li class="dot"></li>
-                                            <li>January 15, 2021</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!--/-->
-        
-                        <!--Post-6-->
-                        <div class="card">
-                            <div class="post-card post-full">
-                                <div class="post-card-image">
-                                    <a href="post.html">
-                                    <img src="assets/img/blog/15.jpg" alt="">
-                                    </a>
-                                </div>
-                                <div class="post-card-content">
-                                    <a href="blog.html" class="categorie"> travel</a>
-                                    <h5>
-                                        <a href="post.html">Top 10 Forests That Every Nature Lover Must Visit</a>
-                                    </h5>
-                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit quam atque ipsa laborum sunt distinctio...
-                                    </p>
-                                    <div class="post-card-info">
-                                        <ul class="list-inline">
-                                            <li>
-                                                <a href="author.html">
-                                                    <img src="assets/img/author/1.jpg" alt="">
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="author.html">David Smith</a>
-                                            </li>
-                                            <li class="dot"></li>
-                                            <li>January 15, 2021</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!--/-->
-        
-                        <!--Post-7-->
-                        <div class="card">
-                            <div class="post-card post-full">
-                                <div class="post-card-image">
-                                    <a href="post.html">
-                                    <img src="assets/img/blog/11.jpg" alt="">
-                                    </a>
-                                    
-                                </div>
-                                <div class="post-card-content">
-                                    <a href="blog.html" class="categorie"> Livestyle</a>
-                                    <h5>
-                                        <a href="post.html">10 best Casual hijab outfit trendy for new year with bags</a>
-                                    </h5>
-                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit quam atque ipsa laborum sunt distinctio...
-                                    </p>
-                                    <div class="post-card-info">
-                                        <ul class="list-inline">
-                                            <li>
-                                                <a href="author.html">
-                                                    <img src="assets/img/author/1.jpg" alt="">
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="author.html">David Smith</a>
-                                            </li>
-                                            <li class="dot"></li>
-                                            <li>January 15, 2021</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!--/-->
-        
-                        <!--Post-7-->
-                        <div class="card">
-                            <div class="post-card post-full">
-                                <div class="post-card-image">
-                                    <a href="post.html">
-                                    <img src="assets/img/blog/25.jpg" alt="">
-                                    </a>
-                                    <a href="post.html">
-                                   
-                                    </a>
-                                </div>
-                                <div class="post-card-content">
-                                    <a href="blog.html" class="categorie"> fashion</a>
-                                    <h5>
-                                        <a href="post.html">Christmas Day outfit ideas: what to wear on Christmas Day</a>
-                                    </h5>
-                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit quam atque ipsa laborum sunt distinctio...
-                                    </p>
-                                    <div class="post-card-info">
-                                        <ul class="list-inline">
-                                            <li>
-                                                <a href="author.html">
-                                                    <img src="assets/img/author/1.jpg" alt="">
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="author.html">David Smith</a>
-                                            </li>
-                                            <li class="dot"></li>
-                                            <li>January 15, 2021</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!--/-->
+                        {% endfor %}
+
         
                     </div>
         
@@ -367,44 +127,6 @@
     </section>
     <!--/-->
 
-    <!--newslettre-->
-    <section class="newslettre">
-        <div class="container-fluid">
-            <div class="newslettre-width text-center">
-                <div class="newslettre-info">
-                    <h5>Subscribe to our Newslatter</h5>
-                    <p> Sign up for free and be the first to get notified about new posts. </p>
-                </div>
-                <form action="#" class="newslettre-form">
-                    <div class="form-flex">
-                        <div class="form-group">
-                            <input type="email" class="form-control" placeholder="Your email adress" required="required">
-                        </div>
-                        <button class="submit-btn" type="submit">Subscribe</button>
-                    </div>
-                </form>
-                <div class="social-icones">
-                    <ul class="list-inline">
-                        <li>
-                            <a href="#">
-                                <i class="fab fa-facebook-f"></i>Facebook</a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <i class="fab fa-twitter"></i>Twitter </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <i class="fab fa-instagram"></i>Instagram </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <i class="fab fa-youtube"></i>Youtube</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
+    {% include 'newsletter.html' %}
     
 {% endblock content %}
