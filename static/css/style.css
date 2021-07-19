@@ -2315,7 +2315,7 @@ input:checked + .slider:before {
   .navbar-nav {
     padding-top: 15px;
   }
-  .navbar .nav-item {
+  .navbar .nav-item .dropdown-menu {
     -webkit-box-shadow: none;
             box-shadow: none;
     margin-bottom: 15px;
