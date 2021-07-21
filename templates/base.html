@@ -57,13 +57,13 @@
     
             <!--navbar-collapse-->
             <div class="collapse navbar-collapse" id="main_nav">
-                <ul class="navbar-nav ml-auto mr-auto" id="navMenu">
+                <ul class="navbar-nav ml-auto mr-auto">
                 <!--  THIS NEED TO BE FIXED -->
                     <li class="nav-item">
                         <a class="nav-link {% active_link 'home' 'active' %}" href="{% url 'home' %}"> Home </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link {% active_link 'blog:post_list' 'active' %}" href="{% url 'blog:post_list' %}"> Articles </a>
+                        <a class="nav-link {% active_link 'blog:post_list || post_by_category || post_list_by_tag' 'active' %}" href="{% url 'blog:post_list' %}"> Articles </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link {% active_link 'about' 'active' %}" href="{% url 'about' %}"> About </a>
