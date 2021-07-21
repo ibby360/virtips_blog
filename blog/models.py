@@ -1,4 +1,6 @@
+from accounts.models import Account
 from django.db import models
+from django.conf import settings
 from django.urls import reverse 
 from django.contrib.auth.models import User
 from django.utils import timezone
@@ -13,15 +15,12 @@ class PublishedManager(models.Manager):
         return super().get_queryset().filter(status='published')
 
 class Author(models.Model):
-    author = models.ForeignKey(User, on_delete=models.CASCADE)
-    profile_pic = models.ImageField(default='static/img/author/default-profile.png')
-    description = models.TextField()
-
-    def get_author_url(self):
-        return reverse('author', args=[self.id])
+    user = models.OneToOneField(settings.AUTH_USER_MODEL,on_delete=models.CASCADE, related_name='profile')
+    bio = models.TextField(blank=True)
+    avatar = models.ImageField(upload_to='avatars', default='img/author/default-profile.png')
 
     def __str__(self):
-        return self.author.username
+        return self.user.username
 
 class Post(models.Model):
     STATUS_CHOICES = (
@@ -34,6 +33,7 @@ class Post(models.Model):
     tags = TaggableManager()
     author = models.ForeignKey(Author, related_name='blog_post', on_delete=models.CASCADE)
     thumbnail = models.ImageField(upload_to='post')
+    overview = models.TextField()
     body = RichTextUploadingField()
     publish = models.DateTimeField(default=timezone.now)
     created = models.DateTimeField(auto_now_add=True)
@@ -56,3 +56,18 @@ class Post(models.Model):
     def get_absolute_url(self):
         return reverse("blog:post_detail", args=[self.category.slug, self.slug])
     
+
+class Comment(models.Model):
+    post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name='comments')
+    name = models.CharField(max_length=150)
+    email = models.EmailField()
+    comment = models.TextField()
+    date_created = models.DateTimeField(auto_now_add=True)
+    updated = models.DateTimeField(auto_now=True)
+    active = models.BooleanField(default=True)
+    
+    class Meta:
+        ordering = ('date_created',)
+
+    def __str__(self):
+        return f'Comment by {self.name} on {self.post}'
