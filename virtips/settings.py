@@ -12,6 +12,15 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 
 from pathlib import Path
 import os
+from django.contrib.messages import constants as messages
+import environ
+
+#################################
+env = environ.Env()
+# reading .env file
+environ.Env.read_env()
+#################################
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -46,6 +55,7 @@ INSTALLED_APPS = [
     'ckeditor',
     'ckeditor_uploader',
     'taggit',
+    'active_link',
 ]
 
 MIDDLEWARE = [
@@ -81,6 +91,8 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'virtips.wsgi.application'
+AUTH_USER_MODEL = 'accounts.Account'
+
 
 
 # Database
@@ -153,6 +165,10 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+MESSAGE_TAGS = {
+    messages.ERROR: 'danger',
+}
+
 # CKeditor configurations
 CKEDITOR_CONFIGS = {
     'default': {
@@ -201,3 +217,13 @@ CKEDITOR_CONFIGS = {
 
     },
 }
+
+ACTIVE_LINK_STRICT = True
+ACTIVE_LINK_CSS_CLASS = False
+
+# SMTP configuration
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = env('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD')
+EMAIL_USE_TLS = True
