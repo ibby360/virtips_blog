@@ -2204,6 +2204,21 @@ input:checked + .slider:before {
 
 
 /* -----------------------------
+		 Django Forms Errors
+--------------------------------- */
+.errorlist {
+  padding-top: .25rem;
+  padding-left: 1rem;
+
+}
+
+.errorlist li{
+  color: red;
+  font-size: 80%;
+  font-weight: 400;
+}
+
+/* -----------------------------
 		 Go Deeper
 --------------------------------- */
 .topic-image img{
