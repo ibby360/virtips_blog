@@ -16,6 +16,7 @@ class PublishedManager(models.Manager):
 
 class Author(models.Model):
     user = models.OneToOneField(settings.AUTH_USER_MODEL,on_delete=models.CASCADE, related_name='profile')
+    name = models.CharField(max_length=50)
     bio = models.TextField(blank=True)
     avatar = models.ImageField(upload_to='avatars', default='img/author/default-profile.png')
 
