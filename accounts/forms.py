@@ -25,6 +25,11 @@ class RegistrationForm(forms.ModelForm):
         if password != confirm_password:
             self.add_error('confirm_password', "Password does not match")
 
+        username = cleaned_data.get('username')
+        if username and Account.objects.filter(username__iexact=username).exists():
+            self.add_error('username', 'A user with that username already exists.')
+        return cleaned_data
+
     def __init__(self, *args, **kwargs):
         super(RegistrationForm, self).__init__(*args, **kwargs)
         self.fields['username'].widget.attrs['placeholder'] = 'Enter Username'
