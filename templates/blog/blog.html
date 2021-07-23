@@ -50,16 +50,16 @@
                                     <h5>
                                         <a href="{{post.get_absolute_url}}">{{post.title}}</a>
                                     </h5>
-                                    <p>{{post.body | truncatewords_html:15|safe | linebreaks }}</p>
+                                    <p>{{post.overview | truncatewords_html:30|safe | linebreaks }}</p>
                                     <div class="post-card-info">
                                         <ul class="list-inline">
                                             <li>
-                                                <a href="{{post.get_author_url}}">
-                                                    <img src="{{post.author.profile_pic.url}}" alt="">
+                                                <a href="{% url 'author' post.author.user.username%}">
+                                                    <img src="{{post.author.avatar.url}}" alt="">
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="/">{{post.author.author}}</a>
+                                                <a href="{% url 'author' post.author.user.username%}">{{post.author.name}}</a>
                                             </li>
                                             <li class="dot"></li>
                                             <li><span class="icon_clock_alt pr-2"></span>{{post.publish | date}}</li>
