@@ -11,11 +11,11 @@
                     <!--widget-author-->
                     <div class="widget-author inner-width">
                         <a href="author.html" class="image">
-                            <img src="{{author.profile_pic.url}}" alt="">
+                            <img src="{{author.avatar.url}}" alt="">
                         </a>
-                        <h6><span>Hi, I'm {{author.author}}</span></h6>
+                        <h6><span>Hi, I'm {{author.name}}</span></h6>
                         <div class="link">{{post_count}} Articles</div>
-                        <p> {{author.description}}
+                        <p> {{author.bio}}
                         </p>
                         
                         <div class="social-media">
@@ -72,17 +72,17 @@
                                     <h5>
                                         <a href="{{post.get_absolute_url}}">{{post.title}}</a>
                                     </h5>
-                                    <p>{{post.body | truncatewords_html:15|safe}}
+                                    <p>{{post.overview | truncatewords_html:15|safe}}
                                     </p>
                                     <div class="post-card-info">
                                         <ul class="list-inline">
                                             <li>
-                                                <a href="author.html">
-                                                    <img src="{{post.author.profile_pic.url}}" alt="">
+                                                <a href="{% url 'author' post.author.user.username%}">
+                                                    <img src="{{post.author.avatar.url}}" alt="">
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="author.html">{{post.author.author}}</a>
+                                                <a href="{% url 'author' post.author.user.username%}">{{post.author.name}}</a>
                                             </li>
                                             <li class="dot"></li>
                                             <li>{{post.publish | date}}</li>
