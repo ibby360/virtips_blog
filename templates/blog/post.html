@@ -18,12 +18,12 @@
                             <h4>{{post.title}}</h4>
                             <div class="post-single-info">
                                 <ul class="list-inline">
-                                    <li><a href="author.html"><img src="{% static 'img/author/1.jpg' %}" alt=""></a></li>
-                                    <li><a href="author.html">{{post.author.author.username}}</a> </li>
+                                    <li><a href="{% url 'author' post.author.user.username%}"><img src="{{post.author.avatar.url}}" alt=""></a></li>
+                                    <li><a href="{% url 'author' post.author.user.username%}">{{post.author.name}}</a> </li>
                                     <li class="dot"></li>
                                     <li>{{post.publish | date}}</li>
                                     <li class="dot"></li>
-                                    <li><span id="time"></span> minute read</li>
+                                    <li><span id="time"></span> minutes read</li>
                                     <li class="dot"></li>
                                     <li>3 comments</li>
                                 </ul>
@@ -83,15 +83,13 @@
                         <!--widget-author-->
                         <div class="widget">
                             <div class="widget-author">
-                                <a href="author.html" class="image">
-                                    <img src="{% static 'img/author/1.jpg' %}" alt="">
+                                <a href="{% url 'author' post.author.user.username%}" class="image">
+                                    <img src="{{post.author.avatar.url}}" alt="">
                                 </a>
                                 <h6>
-                                    <span>Hi, I'm David Smith</span>
+                                    <span>Hi, I'm {{post.author.name}}</span>
                                 </h6>
-                                <p>
-                                I'm David Smith, husband and father , I love Photography,travel and nature. I'm working as a writer and blogger with
-                                experience of 5 years until now.</p>
+                                <p>{{post.author.bio | truncatewords_html:30}}</p>
                         
                         
                                 <div class="social-media">
@@ -325,10 +323,14 @@
             </div>
         </div>
     </section>
+        <!-- JS Reading time  -->
+    <script src="{% static 'js/reading-time.js' %}"></script>
+    {% block javascript %}
     <script>
         let div = document.getElementById('article');
         let unorderedList = div.getElementsByTagName('ul')[0];
         unorderedList.classList.add('list');
     </script>
-    
+    {% endblock javascript %}
+
 {% endblock content %}
