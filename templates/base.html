@@ -68,9 +68,9 @@
                     <li class="nav-item">
                         <a class="nav-link {% active_link 'about' 'active' %}" href="{% url 'about' %}"> About </a>
                     </li>
-                    <li class="nav-item">
+                    {% comment %} <li class="nav-item">
                         <a class="nav-link {% active_link 'contact' 'active' %}" href="{% url 'contact' %}"> Contact </a>
-                    </li>
+                    </li> {% endcomment %}
                     {% if user.is_authenticated %}
                     <li class="nav-item">
                         <a class="nav-link {% active_link 'logout' 'active' %}" href="{% url 'logout' %}"> Logout </a>
@@ -184,9 +184,8 @@
     <script src="{% static 'js/main.js' %}"></script>
 
     <!-- AOS Scroll -->
-    <script src="{% static 'oas/dist/aos.js' %}"></script
-    <!-- JS Reading time  -->
-    <script src="{% static 'js/reading-time.js' %}"></script>
+    <script src="{% static 'oas/dist/aos.js' %}"></script>
+
     <script>
         AOS.init({
             easing: 'ease-out-back',   
