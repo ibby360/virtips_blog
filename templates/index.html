@@ -13,7 +13,7 @@
                     <div class="row">
                         <div class="col-lg-8 offset-lg-2 col-md-10 offset-md-1">
                             <div class="hero-content">
-                                <a href="blog.html" class="categorie">travel</a>
+                                <a href="{{post.category.get_absolute_url}}" class="categorie">{{post.category}}</a>
                                 <h2>
                                     <a href="{{post.get_absolute_url}}">{{post.title}}</a>
                                 </h2>
@@ -26,12 +26,12 @@
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="author.html">{{post.author.author}}</a>
+                                            <a href="author.html">{{post.author.name}}</a>
                                         </li>
                                         <li class="dot"></li>
                                         <li>{{post.publish | date}}</li>
                                         <li class="dot"></li>
-                                        <li>10 Min Reads</li>
+                                        <li>3 comments</li>
                                     </ul>
                                 </div>
                             </div>
@@ -66,20 +66,20 @@
                                     
                                 </div>
                                 <div class="post-card-content">
-                                    <a href="blog.html" class="categorie"> Travel</a>
+                                    <a href="{{post.category.get_absolute_url}}" class="categorie"> {{post.category}}</a>
                                     <h5>
                                         <a href="{{post.get_absolute_url}}">{{post.title}}</a>
                                     </h5>
-                                    <p>{{post.body | truncatewords_html:13|safe}}</p>
+                                    <p>{{post.overview | truncatewords_html:13|safe}}</p>
                                     <div class="post-card-info">
                                         <ul class="list-inline">
                                             <li>
                                                 <a href="author.html">
-                                                    <img src="{% static 'img/author/1.jpg' %}" alt="">
+                                                    <img src="{{post.author.avatar.url}}" alt="">
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="author.html">{{post.author.author}}</a>
+                                                <a href="{% url 'author' post.author.user.username%}">{{post.author.name}}</a>
                                             </li>
                                             <li class="dot"></li>
                                             <li>{{post.publish | date}}</li>

@@ -46,7 +46,7 @@
                                     </a>
                                 </div>
                                 <div class="post-card-content">
-                                    <a href="#" class="categorie">{{post.category}}</a>
+                                    <a href="{{post.category.get_absolute_url}}" class="categorie">{{post.category}}</a>
                                     <h5>
                                         <a href="{{post.get_absolute_url}}">{{post.title}}</a>
                                     </h5>
