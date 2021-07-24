@@ -195,7 +195,7 @@
                             {% for category in links %}
                             <li>
                                 <a href="{{category.get_absolute_url}}" class="categorie">{{category.category_name}}</a>
-                                <span class="ml-auto">{{categorie_count}} Posts</span>
+                                <span class="ml-auto">{{category.category_post_count}} Posts</span>
                             </li>
                             {% endfor %}
                         </ul>
