@@ -1,5 +1,6 @@
 from django.db import models
 from django.urls import reverse
+import blog.models
 
 # Create your models here.
 
@@ -13,6 +14,9 @@ class Category(models.Model):
 
     def get_absolute_url(self):
         return reverse('blog:post_by_category', args=[self.slug])
+
+    def category_post_count(self):
+        return blog.models.Post.published.filter(category=self.id).count()
 
     def __str__(self):
         return self.category_name
