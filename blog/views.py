@@ -5,6 +5,7 @@ from django.core.exceptions import ObjectDoesNotExist
 from category.models import Category
 from blog.models import Post, Author
 from django.db.models import Q, Count
+from blog.forms import CommentForm
 from taggit.models import Tag
 
 # Create your views here.
@@ -50,10 +51,29 @@ def post_detail(request, post, category_slug):
     except ObjectDoesNotExist:
         next_post = None
 
+    comments = post.comments.filter(active=True)
+    new_comment = None
+    # Comment posted
+    if request.method == 'POST':
+        comment_form = CommentForm(data=request.POST)
+        if comment_form.is_valid():
+
+            # Create Comment object but don't save to database yet
+            new_comment = comment_form.save(commit=False)
+            # Assign the current post to the comment
+            new_comment.post = post
+            # Save the comment to the database
+            new_comment.save()
+    else:
+        comment_form = CommentForm()
+
     context = {
         'post': post,
         'previous_post': previous_post,
         'next_post': next_post,
+        'new_comment': new_comment,
+        'comments': comments,
+        'comment_form': comment_form,
     }
     return render(request, 'blog/post.html', context)
 
