@@ -21,12 +21,12 @@
                                 <div class="post-card-info">
                                     <ul class="list-inline">
                                         <li>
-                                            <a href="author.html">
-                                                <img src="{% static 'img/author/1.jpg' %}" alt="">
+                                            <a href="{% url 'blog:author' post.author.user.username%}">
+                                                <img src="{{post.author.avatar.url}}" alt="Author's profile picture">
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="author.html">{{post.author.name}}</a>
+                                            <a href="{% url 'blog:author' post.author.user.username%}">{{post.author.name}}</a>
                                         </li>
                                         <li class="dot"></li>
                                         <li>{{post.publish | date}}</li>
@@ -74,12 +74,12 @@
                                     <div class="post-card-info">
                                         <ul class="list-inline">
                                             <li>
-                                                <a href="author.html">
+                                                <a href="{% url 'blog:author' post.author.user.username%}">
                                                     <img src="{{post.author.avatar.url}}" alt="">
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="{% url 'author' post.author.user.username%}">{{post.author.name}}</a>
+                                                <a href="{% url 'blog:author' post.author.user.username%}">{{post.author.name}}</a>
                                             </li>
                                             <li class="dot"></li>
                                             <li>{{post.publish | date}}</li>
