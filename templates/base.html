@@ -12,7 +12,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
     <!-- favicon -->
-    <link rel="icon" sizes="16x16" href="{% static 'img/favicon.png' %}">
+    <link rel="icon" sizes="16x16" href="{% static 'img/favicon.ico' %}">
 
     <!-- Title -->
     <title> 
@@ -63,7 +63,7 @@
                         <a class="nav-link {% active_link 'home' 'active' %}" href="{% url 'home' %}"> Home </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link {% active_link 'blog:post_list || post_by_category || post_list_by_tag' 'active' %}" href="{% url 'blog:post_list' %}"> Articles </a>
+                        <a class="nav-link {% active_link 'blog:post_list' 'active'%}" href="{% url 'blog:post_list' %}"> Articles </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link {% active_link 'about' 'active' %}" href="{% url 'about' %}"> About </a>
