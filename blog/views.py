@@ -57,6 +57,18 @@ def post_detail(request, post, category_slug):
     }
     return render(request, 'blog/post.html', context)
 
+def author(request, username):
+    author_obj = get_object_or_404(Author, user__username=username)
+    posts = Post.published.filter(author=author_obj).order_by('-publish')
+    post_count = posts.count()
+    context = {
+        'author': author_obj,
+        'posts': posts,
+        'post_count': post_count
+    }
+    return render(request, 'blog/author.html', context)
+
+
 def search(request):
     if 'q' in request.GET:
         q = request.GET['q']
