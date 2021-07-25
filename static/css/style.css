@@ -2381,6 +2381,10 @@ input:checked + .slider:before {
   .carousel-hero .owl-nav {
     display: none;
   }
+
+  .post-single-info ul {
+    text-align: center;
+  }
 }
 
 @media screen and (max-width: 576px) {
@@ -2439,6 +2443,28 @@ input:checked + .slider:before {
   }
   .contact .google-map iframe {
     height: auto;
+  }
+
+  .post-single-content h4 {
+    text-align: center;
+  }
+  .post-single-info li img {
+    display: none;
+  }
+
+  .post-single-info .list-inline .dot{
+    display: none;
+  }
+  .post-single-info ul {
+    text-align: center;
+  }
+
+  .post-single-info ul li {
+    padding: .5rem;
+  }
+  .post-single-info ul li:nth-child(2) {
+    display: none;
+
   }
 }
 
