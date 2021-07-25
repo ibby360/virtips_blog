@@ -4,7 +4,7 @@ from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.core.exceptions import ObjectDoesNotExist
 from category.models import Category
 from blog.models import Post, Author
-from django.db.models import Q
+from django.db.models import Q, Count
 from taggit.models import Tag
 
 # Create your views here.
@@ -25,7 +25,6 @@ def post_list(request, tag_slug=None, category_slug=None):
         page = request.GET.get('page')
         paged_posts = paginator.get_page(page)
         post_count = posts.count()
-
     tags = Tag.objects.all()
     tag = None
     if tag_slug:
@@ -36,7 +35,7 @@ def post_list(request, tag_slug=None, category_slug=None):
         'posts': paged_posts,
         'tags': tags,
         'tag': tag,
-        'post_count': post_count
+        'post_count': post_count,
     }
     return render(request, 'blog/blog.html', context)
 
@@ -44,10 +43,12 @@ def post_detail(request, post, category_slug):
     post = get_object_or_404(Post, slug=post, status='published', category__slug=category_slug)
     try:
         previous_post = post.get_previous_by_publish()
-        next_post = post.get_next_by_publish()
     except ObjectDoesNotExist:
         previous_post = None
+    try:
         next_post = post.get_next_by_publish()
+    except ObjectDoesNotExist:
+        next_post = None
 
     context = {
         'post': post,
