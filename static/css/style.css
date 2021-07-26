@@ -634,8 +634,17 @@ ul {
   background-color: #c32aa3;
 }
 
+
+.color-linkedin {
+  background-color: #0a66c2;
+}
+
 .color-youtube {
   background-color: #e52d27;
+}
+
+.color-whatsapp {
+  background-color: #00e676;
 }
 
 .color-twitter {
@@ -644,6 +653,10 @@ ul {
 
 .color-dribbble {
   background-color: #ddd;
+}
+
+.color-telegram {
+  background-color: #24a2e0;
 }
 
 .color-pinterest {
