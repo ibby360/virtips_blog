@@ -1123,6 +1123,12 @@ input:checked + .slider:before {
   margin-bottom: 30px;
 }
 
+.line {
+  border-top: 3px solid var(--mint);
+  width: 3rem;
+  padding-top: 2rem;
+  display: inline-block;
+}
 /* ------------------------------
 		  Widget
 ------------------------------ */
