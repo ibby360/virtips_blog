@@ -28,6 +28,8 @@
                                     {% with comments.count as total_comments %}
                                     <li>{{total_comments}} comment{{total_comments | pluralize}}</li>
                                     {% endwith %}
+                                    <li class="dot"></li>
+                                    <li><span id="time"></span>{{post.views}} view{{post.views | pluralize}}</li>
                                 </ul>
                             </div>
                         </div>
