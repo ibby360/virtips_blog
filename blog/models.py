@@ -41,6 +41,7 @@ class Post(models.Model):
     updated = models.DateTimeField(auto_now=True)
     status = models.CharField(max_length=50, choices=STATUS_CHOICES, default='draft')
     featured = models.BooleanField(default=False)
+    views = models.PositiveIntegerField(default=0)
 
     objects  = models.Manager() # Default Manager
     published = PublishedManager() # Custom Manager
