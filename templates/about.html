@@ -1,7 +1,8 @@
 {% extends 'base.html' %}
-{% block title %} Contact Us {% endblock title %}
+{% block title %} About Us | VirTips {% endblock title %}
 {% load static %}
 
+{% load blog_tags %}
 {% block content %}
     
     <!--about-us-->
@@ -16,7 +17,7 @@
             </div>
         
             <div class="row ">
-                <div class="col-lg-8 mt-30">
+                <div class="col-lg-8 mt-30" data-aos="fade-right" data-aos-duration="3000">
                     <div class="about-us">
                         <div class="about-us-image">
                             <img src="{% static 'img/about-us.jpg' %}" alt="">
@@ -51,77 +52,55 @@
                 </div>
                 <div class="col-lg-4 max-width">
                     <!--widget-latest-posts-->
-                    <div class="widget ">
+                    {% get_latest_posts as latest_posts %}
+                    {% if latest_posts %}
+                    <div class="widget " data-aos="fade-up" data-aos-duration="3000">
                         <div class="section-title">
                             <h5>Latest Posts</h5>
                         </div>
                         <ul class="widget-latest-posts">
+                            {% for post in latest_posts %}
                             <li class="last-post">
                                 <div class="image">
-                                    <a href="post.html">
-                                        <img src="{% static 'img/latest/1.jpg' %}" alt="...">
+                                    <a href="{{post.get_absolute_url}}">
+                                        <img src="{{post.thumbnail.url}}" alt="...">
                                     </a>
                                 </div>
                                 <div class="nb">1</div>
                                 <div class="content">
                                     <p>
-                                        <a href="post.html">5 Things I Wish I Knew Before Traveling to Malaysia</a>
+                                        <a href="{{post.get_absolute_url}}">{{post.title}}</a>
                                     </p>
                                     <small>
-                                        <span class="icon_clock_alt"></span> January 15, 2021</small>
+                                        <span class="icon_clock_alt"></span>{{post.publish | date}}</small>
                                 </div>
                             </li>
-                            <li class="last-post">
-                                <div class="image">
-                                    <a href="post.html">
-                                        <img src="{% static 'img/latest/2.jpg" alt="...">
-                                    </a>
-                                </div>
-                                <div class="nb">2</div>
-                                <div class="content">
-                                    <p>
-                                        <a href="post.html">Everything you need to know about visiting the Amazon.</a>
-                                    </p>
-                                    <small>
-                                        <span class="icon_clock_alt"></span> January 15, 2021</small>
-                                </div>
-                            </li>
-                            <li class="last-post">
-                                <div class="image">
-                                    <a href="post.html">
-                                        <img src="{% static 'img/latest/3.jpg' %}" alt="...">
-                                    </a>
-                                </div>
-                                <div class="nb">3</div>
-                                <div class="content">
-                                    <p>
-                                        <a href="post.html">How to spend interesting vacation after hard work?</a>
-                                    </p>
-                                    <small>
-                                        <span class="icon_clock_alt"></span> January 15, 2021</small>
-                                </div>
-                            </li>
-                            <li class="last-post">
-                                <div class="image">
-                                    <a href="post.html">
-                                        <img src="{% static 'img/latest/4.jpg' %}" alt="...">
-                                    </a>
-                                </div>
-                                <div class="nb">4</div>
-                                <div class="content">
-                                    <p>
-                                        <a href="post.html">10 Best and Most Beautiful Places to Visit in Italy</a>
-                                    </p>
-                                    <small>
-                                        <span class="icon_clock_alt"></span> January 15, 2021</small>
-                                </div>
-                            </li>
+                            {% endfor %}
+
                         </ul>
                     </div>
+                    {% endif %}
                     <!--/-->
+
+                    <!--widget-categories-->
+                    {% if links %}
+                    <div class="widget" data-aos="fade-up" data-aos-duration="3000">
+                        <div class="section-title">
+                            <h5>Categories</h5>
+                        </div>
+                        <ul class="widget-categories">
+                            {% for category in links %}
+                            <li>
+                                <a href="{{category.get_absolute_url}}" class="categorie">{{category.category_name}}</a>
+                                <span class="ml-auto">{{category.category_post_count}} Posts</span>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    {% endif %}
                 
                     <!--widget-instagram-->
-                    <div class="widget">
+                    <div class="widget" data-aos="fade-up" data-aos-duration="3000">
                         <div class="section-title">
                             <h5>Instagram</h5>
                         </div>
