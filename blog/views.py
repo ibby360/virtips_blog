@@ -15,6 +15,10 @@ def post_list(request, tag_slug=None, category_slug=None):
     categories = None
     posts = None
     tag = None
+    object_list = Post.objects.all()
+    if tag_slug:
+        tag = get_object_or_404(Tag, slug=tag_slug)
+        object_list = object_list.filter(tags__in=[tag]).distinct()
     if category_slug != None:
         categories = get_object_or_404(Category, slug=category_slug)
         posts = Post.published.filter(category=categories)
@@ -29,9 +33,7 @@ def post_list(request, tag_slug=None, category_slug=None):
         paged_posts = paginator.get_page(page)
         post_count = posts.count()
     tags = Tag.objects.all()
-    if tag_slug:
-        tag = get_object_or_404(Tag, slug=tag_slug)
-        posts = posts.filter(tags__in=[tag])
+    
   
     context = {
         'posts': paged_posts,
@@ -43,7 +45,7 @@ def post_list(request, tag_slug=None, category_slug=None):
 
 def post_detail(request, post, category_slug):
     post = get_object_or_404(Post, slug=post, status='published', category__slug=category_slug)
-    session_key = 'post'
+    session_key = f"viewed_article {post}"
     if not request.session.get(session_key, False):
         post.views += 1
         post.save()

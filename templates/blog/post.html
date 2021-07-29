@@ -18,18 +18,36 @@
                             <h4>{{post.title}}</h4>
                             <div class="post-single-info">
                                 <ul class="list-inline">
-                                    <li><a href="{% url 'blog:author' post.author.user.username%}"><img src="{{post.author.avatar.url}}" alt=""></a></li>
-                                    <li><a href="{% url 'blog:author' post.author.user.username%}">{{post.author.name}}</a> </li>
+                                    <li>
+                                        <a href="{% url 'blog:author' post.author.user.username%}">
+                                            <img src="{{post.author.avatar.url}}" alt="">
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="{% url 'blog:author' post.author.user.username%}">{{post.author.name}}</a> 
+                                    </li>
                                     <li class="dot"></li>
-                                    <li>{{post.publish | date}}</li>
+                                    <li>
+                                        <i class="fa fa-calendar-alt pr-2"></i>
+                                        {{post.publish | date}}
+                                    </li>
                                     <li class="dot"></li>
-                                    <li><span id="time"></span> min read</li>
+                                    <li>
+                                        <i class="icon_clock_alt pr-2"></i>
+                                        <span id="time"></span> min read
+                                    </li>
                                     <li class="dot"></li>
                                     {% with comments.count as total_comments %}
-                                    <li>{{total_comments}} comment{{total_comments | pluralize}}</li>
+                                    <li> 
+                                        <i class="fa fa-comments pr-2"></i>
+                                        {{total_comments}} Comment{{total_comments | pluralize}}
+                                    </li>
                                     {% endwith %}
                                     <li class="dot"></li>
-                                    <li><span id="time"></span>{{post.views}} view{{post.views | pluralize}}</li>
+                                    <li>
+                                        <i class="fa fa-eye pr-2"></i>
+                                        {{post.views}} view{{post.views | pluralize}}
+                                    </li>
                                 </ul>
                             </div>
                         </div>
@@ -54,12 +72,12 @@
                                 <ul class="list-inline">
                                     <li>
                                         <a href="https://www.facebook.com/sharer/sharer.php?u={{ request.build_absolute_uri }}" target="_blank" class="color-facebook">
-                                            <i class="fab fa-facebook"></i>
+                                            <i class="fab fa-facebook-f"></i>
                                         </a>
                                     </li>
                                     <li>
                                         <a href="https://www.linkedin.com/sharing/share-offsite/?url={{ request.build_absolute_uri }}"  target="_blank" class="color-linkedin">
-                                            <i class="fab fa-linkedin"></i>
+                                            <i class="fab fa-linkedin-in"></i>
                                         </a>
                                     </li>
                                     <li>
@@ -74,7 +92,7 @@
                                     </li>
                                     <li>
                                         <a href="https://telegram.me/share/url?url={{ request.build_absolute_uri }}&text={{ article.title }}" target="_blank" class="color-telegram">
-                                            <i class="fab fa-telegram"></i>
+                                            <i class="fab fa-telegram-plane"></i>
                                         </a>
                                     </li>
                                 </ul>
