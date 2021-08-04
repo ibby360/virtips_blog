@@ -47,7 +47,7 @@ def register(request):
     context = {
         'form': form
     }
-    return render(request, 'auth/register.html', context)
+    return render(request, 'dashboard/auth/register.html', context)
     
 
 @unauthenticated_user
@@ -62,7 +62,7 @@ def login(request):
         else:
             messages.error(request, 'Invalid login credentials!')
             return redirect('login')
-    return render(request, 'auth/login.html', {})
+    return render(request, 'dashboard/auth/login.html', {})
 
 
 @login_required(login_url='login')
