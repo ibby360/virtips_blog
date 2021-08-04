@@ -8,14 +8,20 @@
 
 {% block content %}
 
-		<main>
+		<main class="cone">
 			<section class="vh-lg-100 mt-5 my-lg-0 bg-soft d-flex align-items-center">
 			{% if request.GET.command == 'verification' %}
-			<div class="container mx-auto alert alert-success text-center" role="alert" style="max-width: 1024px; margin-top:100px; margin-bottom:100px;">
-			Thank you for registering with us. We have sent you a verification email to your email address {{ request.GET.email }}'
-			<br><br>
-			Already verified? <a href="{% url 'login' %}" class="btn btn-secondary">Login</a>
+			<div class="card border-0 shadow w-75 mx-auto">
+				<div class="card-body">
+					<p class="h4 pb-3">
+						Thank you for registering with us. We have sent you a verification email to your email address <span class="text-gray-500 small">{{ request.GET.email }}</span>
+					</p>
+					<span>
+						Already verified? <a href="{% url 'login' %}" class="ms-2 btn btn-gray-900 text-white">Log In</a>
+					</span>
+				</div>
 			</div>
+
 			{% else %}
 				<div class="container">
 
@@ -83,7 +89,7 @@
 						</div>
 					</div>
 				</div>
-				{% endif %}
+			{% endif %}
 			</section>
 		</main>
 {% endblock content%}
