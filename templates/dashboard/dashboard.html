@@ -1,0 +1,313 @@
+{% extends "dashboard/layouts/base.html" %}
+
+{% block title %} Dashboard {% endblock %} 
+{% load static %}
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+
+    <main class="content">
+		<!-- Top navigation Bar -->
+		{% include 'dashboard/includes/navigation.html' %}
+		<!-- xxxxxxxxxxxxx -->
+		<!-- Add Button -->
+		<div class="row mt-4 mb-3">
+			<div class="col-6 d-flex justify-content-between">
+				<div class="me-lg-3">
+					<div class="dropdown">
+						<button class="btn btn-secondary d-inline-flex align-items-center me-2 dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							<span class="icon icon-xs me-2">
+								<i class="fas fa-plus"></i>
+							</span>
+							Add New...
+						</button>
+						<div class="dropdown-menu dashboard-dropdown dropdown-menu-start mt-2 py-1">
+								<a class="dropdown-item d-flex align-items-center" href="#">
+									<span class="dropdown-icon text-gray-400 me-2 ">
+										<i class="fas fa-feather-alt"></i>
+									</span>
+									Add Article
+								</a>
+								<a class="dropdown-item d-flex align-items-center" href="#">
+									<span class="dropdown-icon text-gray-400 me-2 ">
+										<i class="fas fa-layer-group"></i>
+									</span>
+									Add Category
+								</a>
+							</div>
+						</div>
+				</div>
+			</div>
+			<div class="col-6 text-end">
+				<div class="btn-group">
+					<a href="/" class="btn btn-gray-800">
+						<span class="text-white">
+							<i class="pe-2 fab fa-telegram-plane"></i>
+							Visit Website
+						</span>
+					</a> 
+					
+				</div>
+			</div>
+		</div>
+		<!-- xxxxxxxxxxxx -->
+		
+		<!-- Stats Cards -->
+		<div class="row justify-content-md-center">
+			<div class="col-12 col-sm-6 col-xl-4 mb-4">
+        	    <div class="card border-light shadow-sm">
+        	        <div class="card-body">
+        	            <div class="row d-block d-xl-flex align-items-center">
+        	                <div class="col-12 col-xl-5 text-xl-center mb-3 mb-xl-0 d-flex align-items-center justify-content-xl-center">
+        	                    <div class="icon icon-shape icon-md icon-shape-success rounded me-4"><span class="fas fa-clipboard fa-2x"></span></div>
+        	                    <div class="d-sm-none">
+        	                        <h2 class="h5">Published</h2>
+        	                        <h3 class="mb-1">30k</h3>
+        	                    </div>
+        	                </div>
+        	                <div class="col-12 col-xl-7 px-xl-0">
+        	                    <div class="d-none d-sm-block">
+        	                        <h2 class="h5">Published</h2>
+        	                        <h3 class="mb-1">30k</h3>
+        	                    </div>
+        	                    <small>All Published Articles</small>
+        	                    
+        	                </div>
+        	            </div>
+        	        </div>
+        	    </div>
+        	</div>
+        	<div class="col-12 col-sm-6 col-xl-4 mb-4">
+        	    <div class="card border-light shadow-sm">
+        	        <div class="card-body">
+        	            <div class="row d-block d-xl-flex align-items-center">
+        	                <div class="col-12 col-xl-5 text-xl-center mb-3 mb-xl-0 d-flex align-items-center justify-content-xl-center">
+        	                    <div class="icon icon-shape icon-md icon-shape-primary rounded me-4"><span class="fas fa-comments fa-2x"></span></div>
+        	                    <div class="d-sm-none">
+        	                        <h2 class="h5">Comments</h2>
+        	                        <h3 class="mb-1">20k</h3>
+        	                    </div>
+        	                </div>
+        	                <div class="col-12 col-xl-7 px-xl-0">
+        	                    <div class="d-none d-sm-block">
+        	                        <h2 class="h5">Comments</h2>
+        	                        <h3 class="mb-1">20k</h3>
+        	                    </div>
+        	                    <small>Total Number of Comments</small>
+        	                </div>
+        	            </div>
+        	        </div>
+        	    </div>
+        	</div>
+        	<div class="col-12 col-sm-6 col-xl-4 mb-4">
+        	    <div class="card border-light shadow-sm">
+        	        <div class="card-body">
+        	            <div class="row d-block d-xl-flex align-items-center">
+        	                <div class="col-12 col-xl-5 text-xl-center mb-3 mb-xl-0 d-flex align-items-center justify-content-xl-center">
+        	                    <div class="icon icon-shape icon-md icon-shape-secondary rounded me-4"><span class="fas fa-eye fa-2x"></span></div>
+        	                    <div class="d-sm-none">
+        	                        <h2 class="h5">Views</h2>
+        	                        <h3 class="mb-1">30k</h3>
+        	                    </div>
+        	                </div>
+        	                <div class="col-12 col-xl-7 px-xl-0">
+        	                    <div class="d-none d-sm-block">
+        	                        <h2 class="h5">Views</h2>
+        	                        <h3 class="mb-1">30k</h3>
+        	                    </div>
+        	                    <small>Total Number of Views</small>
+        	                    
+        	                </div>
+        	            </div>
+        	        </div>
+        	    </div>
+        	</div>
+		</div>
+		
+		<!-- Section Title -->
+		<div class="py-4">
+			<h4>List of Published Articles</h4>
+		</div>
+		<!-- Posts -->
+		<div class="row row-cols-1 row-cols-md-3 g-4">
+			<div class="col">
+				<div class="card h-80 border-light shadow-sm">
+					<img src="{% static 'dashboard/assets/img/team/profile-picture-2.jpg' %}" class="card-img-top post-card-img" alt="...">
+					<div class="card-body">
+						<a href="article_details.html" class="text-center">
+							<h5 class="card-title">Card title</h5>
+						</a>
+						<p class="card-text">This is a longer card with supporting text below as a natural lead-in to
+							additional content. This content is a little bit longer.</p>
+						<div class="d-block d-flex align-items-center">
+							<small data-bs-toggle="tooltip" data-bs-placement="top" title="Date Published"><span><i class="fas fa-calendar-alt"></i> </span>1 day ago</small>
+							<span class="dot"></span>
+							<small data-bs-toggle="tooltip" data-bs-placement="top" title="Views"><span><i class="fas fa-eye"></i></span> 2 </small>
+							<span class="dot"></span>
+							<small data-bs-toggle="tooltip" data-bs-placement="top" title="Comments"><span><i class="fas fa-comments"></i></span> 2 </small>
+							<span class="dot"></span>
+							<small class="dropdown" data-bs-toggle="tooltip" data-bs-placement="top" title="Update or Delete Article">
+								<span class="d-inline-flex align-items-center me-2 dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+									<i class="fas fa-chevron-down" ></i>
+								</span>
+								<div class="dropdown-menu dashboard-dropdown dropdown-menu-start mt-2 py-1">
+									<a class="dropdown-item d-flex align-items-center" href="#">
+										<span class="dropdown-icon text-gray-400 me-2 ">
+											<i class="fas fa-feather-alt"></i>
+										</span>
+									 Edit Article
+									</a>
+									<a class="dropdown-item d-flex align-items-center" href="#">
+										<span class="dropdown-icon text-gray-400 me-2 ">
+											<i class="fas fa-trash-alt"></i>
+										</span>
+										 Delete Article
+									</a>
+								</div>
+							</small>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col">
+				<div class="card h-80 border-light shadow-sm">
+					<img src="{% static 'dashboard/assets/img/team/profile-picture-3.jpg' %}" class="card-img-top post-card-img" alt="...">
+					<div class="card-body">
+						<a href="article_details.html" class="text-center">
+							<h5 class="card-title">Card title</h5>
+						</a>
+						<p class="card-text">This is a short card.</p>
+						<div class="d-block d-flex align-items-center">
+							<small data-bs-toggle="tooltip" data-bs-placement="top" title="Date Published"><span><i class="fas fa-calendar-alt"></i> </span>1 day ago</small>
+							<span class="dot"></span>
+							<small data-bs-toggle="tooltip" data-bs-placement="top" title="Views"><span><i class="fas fa-eye"></i></span> 2 </small>
+							<span class="dot"></span>
+							<small data-bs-toggle="tooltip" data-bs-placement="top" title="Comments"><span><i class="fas fa-comments"></i></span> 2 </small>
+							<span class="dot"></span>
+							<small class="dropdown" data-bs-toggle="tooltip" data-bs-placement="top" title="Update or Delete Article">
+								<span class="d-inline-flex align-items-center me-2 dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+									<i class="fas fa-chevron-down" ></i>
+								</span>
+								<div class="dropdown-menu dashboard-dropdown dropdown-menu-start mt-2 py-1">
+									<a class="dropdown-item d-flex align-items-center" href="#">
+										<span class="dropdown-icon text-gray-400 me-2 ">
+											<i class="fas fa-feather-alt"></i>
+										</span>
+									 Edit Article
+									</a>
+									<a class="dropdown-item d-flex align-items-center" href="#">
+										<span class="dropdown-icon text-gray-400 me-2 ">
+											<i class="fas fa-trash-alt"></i>
+										</span>
+										 Delete Article
+									</a>
+								</div>
+							</small>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col">
+				<div class="card h-80 border-light shadow-sm">
+					<img src="{% static 'dashboard/assets/img/team/profile-picture-4.jpg' %}" class="card-img-top post-card-img" alt="...">
+					<div class="card-body">
+						<a href="article_details.html" class="text-center">
+							<h5 class="card-title">Card title</h5>
+						</a>
+						<p class="card-text">This is a longer card with supporting text below as a natural lead-in to
+							additional content.</p>
+						<div class="d-block d-flex align-items-center">
+							<small data-bs-toggle="tooltip" data-bs-placement="top" title="Date Published"><span><i class="fas fa-calendar-alt"></i> </span>1 day ago</small>
+							<span class="dot"></span>
+							<small data-bs-toggle="tooltip" data-bs-placement="top" title="Views"><span><i class="fas fa-eye"></i></span> 2 </small>
+							<span class="dot"></span>
+							<small data-bs-toggle="tooltip" data-bs-placement="top" title="Comments"><span><i class="fas fa-comments"></i></span> 2 </small>
+							<span class="dot"></span>
+							<small class="dropdown" data-bs-toggle="tooltip" data-bs-placement="top" title="Update or Delete Article">
+								<span class="d-inline-flex align-items-center me-2 dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+									<i class="fas fa-chevron-down" ></i>
+								</span>
+								<div class="dropdown-menu dashboard-dropdown dropdown-menu-start mt-2 py-1">
+									<a class="dropdown-item d-flex align-items-center" href="#">
+										<span class="dropdown-icon text-gray-400 me-2 ">
+											<i class="fas fa-feather-alt"></i>
+										</span>
+									 Edit Article
+									</a>
+									<a class="dropdown-item d-flex align-items-center" href="#">
+										<span class="dropdown-icon text-gray-400 me-2 ">
+											<i class="fas fa-trash-alt"></i>
+										</span>
+										 Delete Article
+									</a>
+								</div>
+							</small>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col">
+				<div class="card h-80 border-light shadow-sm">
+					<img src="{% static 'dashboard/assets/img/team/profile-picture-5.jpg' %}" class="card-img-top post-card-img" alt="...">
+					<div class="card-body">
+						<a href="article_details.html" class="text-center">
+							<h5 class="card-title">Card title</h5>
+						</a>
+						<p class="card-text">This is a longer card with supporting text below as a natural lead-in to
+							additional content.</p>
+						<div class="d-block d-flex align-items-center">
+							<small data-bs-toggle="tooltip" data-bs-placement="top" title="Date Published"><span><i class="fas fa-calendar-alt"></i> </span>1 day ago</small>
+							<span class="dot"></span>
+							<small data-bs-toggle="tooltip" data-bs-placement="top" title="Views"><span><i class="fas fa-eye"></i></span> 2 </small>
+							<span class="dot"></span>
+							<small data-bs-toggle="tooltip" data-bs-placement="top" title="Comments"><span><i class="fas fa-comments"></i></span> 2 </small>
+							<span class="dot"></span>
+							<small class="dropdown" data-bs-toggle="tooltip" data-bs-placement="top" title="Update or Delete Article">
+								<span class="d-inline-flex align-items-center me-2 dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+									<i class="fas fa-chevron-down" ></i>
+								</span>
+								<div class="dropdown-menu dashboard-dropdown dropdown-menu-start mt-2 py-1">
+									<a class="dropdown-item d-flex align-items-center" href="#">
+										<span class="dropdown-icon text-gray-400 me-2 ">
+											<i class="fas fa-feather-alt"></i>
+										</span>
+									 Edit Article
+									</a>
+									<a class="dropdown-item d-flex align-items-center" href="#">
+										<span class="dropdown-icon text-gray-400 me-2 ">
+											<i class="fas fa-trash-alt"></i>
+										</span>
+										 Delete Article
+									</a>
+								</div>
+							</small>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<!-- footer -->
+		<footer class="bg-white rounded shadow p-5 mb-4 mt-4">
+			<div class="row">
+				<div class="col-12 col-md-4 col-xl-6 mb-4 mb-md-0">
+					<p class="mb-0 text-center text-lg-start">© <span class="current-year"></span> <a
+							class="text-primary fw-normal" href="#"
+							target="_blank">VirTips</a></p>
+				</div>
+				<div class="col-12 col-md-8 col-xl-6 text-center text-lg-start">
+					<ul class="list-inline text-md-end mb-0">
+						<li class="list-inline-item px-0 px-sm-2">
+							<a href="#">About</a>
+						</li>
+						<li class="list-inline-item px-0 px-sm-2">
+							<a href="#">Blog</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</footer>
+	</main>
+
+{% endblock content%}
