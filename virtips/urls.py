@@ -16,6 +16,7 @@ urlpatterns = [
     path('blog/', include('blog.urls')),
     path('about', views.about, name='about'),
     path('contact', views.contact, name='contact'),
+    path('dashboard/', include('dashboard.urls')),
 ]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
 if settings.DEBUG:

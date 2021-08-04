@@ -52,6 +52,7 @@ INSTALLED_APPS = [
     'blog',
     'category',
     'accounts',
+    'dashboard',
     'ckeditor',
     'ckeditor_uploader',
     'taggit',
