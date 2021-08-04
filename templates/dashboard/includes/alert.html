@@ -1,0 +1,31 @@
+{% block stylesheets %}
+    <style>
+        /*  
+
+            I don't know what the fuck keeps
+            breaking the style but this is just
+            a temporary fix untill I remember to come
+            back here to debug this.
+        
+        */
+        .this {
+            background-color: #fcf2e3;
+            padding: .50rem;
+            border-radius: 5px;
+        }
+    </style>
+
+{% endblock stylesheets %}
+
+{% if messages %}
+
+    {% for message in messages %}
+    <div class="alert alert-danger alert-dismissible fade show this" role="alert">
+        <span class="small">{% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}<strong>An error occurred:</strong> {% endif %}
+            {{ message }}
+        <span/>
+        <button type="button" class="btn btn-close ps-4 " data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+    {% endfor %}
+
+{% endif %}
