@@ -58,7 +58,7 @@ def login(request):
         user = auth.authenticate(email=email, password=password)
         if user is not None:
             auth.login(request, user)
-            return redirect('/')
+            return redirect('dashboard')
         else:
             messages.error(request, 'Invalid login credentials!')
             return redirect('login')
@@ -115,7 +115,7 @@ def forgot_password(request):
         else:
             messages.error(request, 'Account does not exist!')
             return redirect('forgot_password')
-    return render(request, 'auth/forgotPassword.html')
+    return render(request, 'dashboard/auth/forgot_password.html')
 
 
 @unauthenticated_user
@@ -152,4 +152,4 @@ def reset_password(request):
             messages.error(request, 'Password do not match!')
             return redirect('resetPassword')
     else:
-        return render(request, 'auth/resetPassword.html')
+        return render(request, 'dashboard/auth/reset_password.html')
