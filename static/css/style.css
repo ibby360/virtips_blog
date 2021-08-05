@@ -1639,59 +1639,6 @@ input:checked + .slider:before {
           box-shadow: 0px 5px 20px 0px rgba(69, 67, 96, 0.1);
 }
 
-.post-single-video, .post-single-audio {
-  margin-top: -60px;
-  margin-bottom: 30px;
-  border-radius: 20px;
-}
-
-.post-single-video iframe, .post-single-audio iframe {
-  width: 100%;
-  height: 400px;
-  border: 0px;
-  -webkit-box-shadow: 0px 5px 20px 0px rgba(69, 67, 96, 0.1);
-          box-shadow: 0px 5px 20px 0px rgba(69, 67, 96, 0.1);
-  border-radius: 20px;
-}
-
-.post-single-gallery {
-  margin-top: -60px;
-  margin-bottom: 30px;
-  border-radius: 20px;
-}
-
-.post-single-gallery img {
-  border-radius: 20px;
-  -webkit-box-shadow: 0px 5px 20px 0px rgba(69, 67, 96, 0.1);
-          box-shadow: 0px 5px 20px 0px rgba(69, 67, 96, 0.1);
-  margin-bottom: 30px;
-}
-
-.post-single-gallery .owl-dots {
-  text-align: center;
-  line-height: 0;
-}
-
-.post-single-gallery .owl-dot span {
-  display: block;
-  width: 10px;
-  height: 10px;
-  background-color: transparent;
-  border: 1px solid var(--mint);
-  margin: 0 6px;
-  border-radius: 50%;
-  -webkit-transition: all 0.5s ease-in-out;
-  transition: all 0.5s ease-in-out;
-}
-
-.post-single-gallery .owl-dot.active span {
-  background-color: var(--mint);
-}
-
-.post-single-gallery .owl-stage-outer {
-  margin-bottom: 0px;
-  border-radius: 20px;
-}
 
 .post-single-content .categorie {
   margin-bottom: 20px;
