@@ -63,13 +63,13 @@
         	                    <div class="icon icon-shape icon-md icon-shape-success rounded me-4"><span class="fas fa-clipboard fa-2x"></span></div>
         	                    <div class="d-sm-none">
         	                        <h2 class="h5">Published</h2>
-        	                        <h3 class="mb-1">30k</h3>
+        	                        <h3 class="mb-1">{{total_published_articles}}</h3>
         	                    </div>
         	                </div>
         	                <div class="col-12 col-xl-7 px-xl-0">
         	                    <div class="d-none d-sm-block">
         	                        <h2 class="h5">Published</h2>
-        	                        <h3 class="mb-1">30k</h3>
+        	                        <h3 class="mb-1">{{total_published_articles}}</h3>
         	                    </div>
         	                    <small>All Published Articles</small>
         	                    
@@ -86,13 +86,13 @@
         	                    <div class="icon icon-shape icon-md icon-shape-primary rounded me-4"><span class="fas fa-comments fa-2x"></span></div>
         	                    <div class="d-sm-none">
         	                        <h2 class="h5">Comments</h2>
-        	                        <h3 class="mb-1">20k</h3>
+        	                        <h3 class="mb-1">{{total_articles_comments}}</h3>
         	                    </div>
         	                </div>
         	                <div class="col-12 col-xl-7 px-xl-0">
         	                    <div class="d-none d-sm-block">
         	                        <h2 class="h5">Comments</h2>
-        	                        <h3 class="mb-1">20k</h3>
+        	                        <h3 class="mb-1">{{total_articles_comments}}</h3>
         	                    </div>
         	                    <small>Total Number of Comments</small>
         	                </div>
@@ -108,13 +108,13 @@
         	                    <div class="icon icon-shape icon-md icon-shape-secondary rounded me-4"><span class="fas fa-eye fa-2x"></span></div>
         	                    <div class="d-sm-none">
         	                        <h2 class="h5">Views</h2>
-        	                        <h3 class="mb-1">30k</h3>
+        	                        <h3 class="mb-1">{{total_articles_views}}</h3>
         	                    </div>
         	                </div>
         	                <div class="col-12 col-xl-7 px-xl-0">
         	                    <div class="d-none d-sm-block">
         	                        <h2 class="h5">Views</h2>
-        	                        <h3 class="mb-1">30k</h3>
+        	                        <h3 class="mb-1">{{total_articles_views}}</h3>
         	                    </div>
         	                    <small>Total Number of Views</small>
         	                    
@@ -126,26 +126,27 @@
 		</div>
 		
 		<!-- Section Title -->
+		{% if recent_published_articles %}
 		<div class="py-4">
-			<h4>List of Published Articles</h4>
+			<h4>Recent Published Articles</h4>
 		</div>
 		<!-- Posts -->
 		<div class="row row-cols-1 row-cols-md-3 g-4">
+			{% for article in recent_published_articles %}
 			<div class="col">
-				<div class="card h-80 border-light shadow-sm">
-					<img src="{% static 'dashboard/assets/img/team/profile-picture-2.jpg' %}" class="card-img-top post-card-img" alt="...">
+				<div class="card h-100 border-light shadow-sm">
+					<img src="{{ article.thumbnail.url }}" class="card-img-top post-card-img" alt="...">
 					<div class="card-body">
 						<a href="article_details.html" class="text-center">
-							<h5 class="card-title">Card title</h5>
+							<h5 class="card-title">{{ article.title }}</h5>
 						</a>
-						<p class="card-text">This is a longer card with supporting text below as a natural lead-in to
-							additional content. This content is a little bit longer.</p>
+						<p class="card-text">{{ article.overview | truncatewords_html:10}}</p>
 						<div class="d-block d-flex align-items-center">
-							<small data-bs-toggle="tooltip" data-bs-placement="top" title="Date Published"><span><i class="fas fa-calendar-alt"></i> </span>1 day ago</small>
+							<small data-bs-toggle="tooltip" data-bs-placement="top" title="{{article.publish}}"><span><i class="fas fa-calendar-alt pe-1"></i> </span>{{ article.publish | date:'M d' }}</small>
 							<span class="dot"></span>
-							<small data-bs-toggle="tooltip" data-bs-placement="top" title="Views"><span><i class="fas fa-eye"></i></span> 2 </small>
+							<small data-bs-toggle="tooltip" data-bs-placement="top" title="Views"><span><i class="fas fa-eye pe-1"></i></span> {{ article.views }} </small>
 							<span class="dot"></span>
-							<small data-bs-toggle="tooltip" data-bs-placement="top" title="Comments"><span><i class="fas fa-comments"></i></span> 2 </small>
+							<small data-bs-toggle="tooltip" data-bs-placement="top" title="Comments"><span><i class="fas fa-comments pe-1"></i></span> {{ article.comments.count}}</small>
 							<span class="dot"></span>
 							<small class="dropdown" data-bs-toggle="tooltip" data-bs-placement="top" title="Update or Delete Article">
 								<span class="d-inline-flex align-items-center me-2 dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -170,123 +171,15 @@
 					</div>
 				</div>
 			</div>
-			<div class="col">
-				<div class="card h-80 border-light shadow-sm">
-					<img src="{% static 'dashboard/assets/img/team/profile-picture-3.jpg' %}" class="card-img-top post-card-img" alt="...">
-					<div class="card-body">
-						<a href="article_details.html" class="text-center">
-							<h5 class="card-title">Card title</h5>
-						</a>
-						<p class="card-text">This is a short card.</p>
-						<div class="d-block d-flex align-items-center">
-							<small data-bs-toggle="tooltip" data-bs-placement="top" title="Date Published"><span><i class="fas fa-calendar-alt"></i> </span>1 day ago</small>
-							<span class="dot"></span>
-							<small data-bs-toggle="tooltip" data-bs-placement="top" title="Views"><span><i class="fas fa-eye"></i></span> 2 </small>
-							<span class="dot"></span>
-							<small data-bs-toggle="tooltip" data-bs-placement="top" title="Comments"><span><i class="fas fa-comments"></i></span> 2 </small>
-							<span class="dot"></span>
-							<small class="dropdown" data-bs-toggle="tooltip" data-bs-placement="top" title="Update or Delete Article">
-								<span class="d-inline-flex align-items-center me-2 dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-									<i class="fas fa-chevron-down" ></i>
-								</span>
-								<div class="dropdown-menu dashboard-dropdown dropdown-menu-start mt-2 py-1">
-									<a class="dropdown-item d-flex align-items-center" href="#">
-										<span class="dropdown-icon text-gray-400 me-2 ">
-											<i class="fas fa-feather-alt"></i>
-										</span>
-									 Edit Article
-									</a>
-									<a class="dropdown-item d-flex align-items-center" href="#">
-										<span class="dropdown-icon text-gray-400 me-2 ">
-											<i class="fas fa-trash-alt"></i>
-										</span>
-										 Delete Article
-									</a>
-								</div>
-							</small>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="col">
-				<div class="card h-80 border-light shadow-sm">
-					<img src="{% static 'dashboard/assets/img/team/profile-picture-4.jpg' %}" class="card-img-top post-card-img" alt="...">
-					<div class="card-body">
-						<a href="article_details.html" class="text-center">
-							<h5 class="card-title">Card title</h5>
-						</a>
-						<p class="card-text">This is a longer card with supporting text below as a natural lead-in to
-							additional content.</p>
-						<div class="d-block d-flex align-items-center">
-							<small data-bs-toggle="tooltip" data-bs-placement="top" title="Date Published"><span><i class="fas fa-calendar-alt"></i> </span>1 day ago</small>
-							<span class="dot"></span>
-							<small data-bs-toggle="tooltip" data-bs-placement="top" title="Views"><span><i class="fas fa-eye"></i></span> 2 </small>
-							<span class="dot"></span>
-							<small data-bs-toggle="tooltip" data-bs-placement="top" title="Comments"><span><i class="fas fa-comments"></i></span> 2 </small>
-							<span class="dot"></span>
-							<small class="dropdown" data-bs-toggle="tooltip" data-bs-placement="top" title="Update or Delete Article">
-								<span class="d-inline-flex align-items-center me-2 dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-									<i class="fas fa-chevron-down" ></i>
-								</span>
-								<div class="dropdown-menu dashboard-dropdown dropdown-menu-start mt-2 py-1">
-									<a class="dropdown-item d-flex align-items-center" href="#">
-										<span class="dropdown-icon text-gray-400 me-2 ">
-											<i class="fas fa-feather-alt"></i>
-										</span>
-									 Edit Article
-									</a>
-									<a class="dropdown-item d-flex align-items-center" href="#">
-										<span class="dropdown-icon text-gray-400 me-2 ">
-											<i class="fas fa-trash-alt"></i>
-										</span>
-										 Delete Article
-									</a>
-								</div>
-							</small>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="col">
-				<div class="card h-80 border-light shadow-sm">
-					<img src="{% static 'dashboard/assets/img/team/profile-picture-5.jpg' %}" class="card-img-top post-card-img" alt="...">
-					<div class="card-body">
-						<a href="article_details.html" class="text-center">
-							<h5 class="card-title">Card title</h5>
-						</a>
-						<p class="card-text">This is a longer card with supporting text below as a natural lead-in to
-							additional content.</p>
-						<div class="d-block d-flex align-items-center">
-							<small data-bs-toggle="tooltip" data-bs-placement="top" title="Date Published"><span><i class="fas fa-calendar-alt"></i> </span>1 day ago</small>
-							<span class="dot"></span>
-							<small data-bs-toggle="tooltip" data-bs-placement="top" title="Views"><span><i class="fas fa-eye"></i></span> 2 </small>
-							<span class="dot"></span>
-							<small data-bs-toggle="tooltip" data-bs-placement="top" title="Comments"><span><i class="fas fa-comments"></i></span> 2 </small>
-							<span class="dot"></span>
-							<small class="dropdown" data-bs-toggle="tooltip" data-bs-placement="top" title="Update or Delete Article">
-								<span class="d-inline-flex align-items-center me-2 dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-									<i class="fas fa-chevron-down" ></i>
-								</span>
-								<div class="dropdown-menu dashboard-dropdown dropdown-menu-start mt-2 py-1">
-									<a class="dropdown-item d-flex align-items-center" href="#">
-										<span class="dropdown-icon text-gray-400 me-2 ">
-											<i class="fas fa-feather-alt"></i>
-										</span>
-									 Edit Article
-									</a>
-									<a class="dropdown-item d-flex align-items-center" href="#">
-										<span class="dropdown-icon text-gray-400 me-2 ">
-											<i class="fas fa-trash-alt"></i>
-										</span>
-										 Delete Article
-									</a>
-								</div>
-							</small>
-						</div>
-					</div>
-				</div>
-			</div>
+			{% endfor %}
 		</div>
+		{% else %}
+		<div class="py-4 text-center">
+			<img src="{% static 'dashboard/assets/img/illustrations/not_found_60pq.svg' %}" class="pb-3" alt="">
+			<p>This is where you can manage your posts, but you haven't written anything yet.</p>
+			<a href="" class="btn btn-gray-800 text-white">Write your first post now</a>
+		</div>
+		{% endif %}
 		
 		<!-- footer -->
 		<footer class="bg-white rounded shadow p-5 mb-4 mt-4">
@@ -299,10 +192,10 @@
 				<div class="col-12 col-md-8 col-xl-6 text-center text-lg-start">
 					<ul class="list-inline text-md-end mb-0">
 						<li class="list-inline-item px-0 px-sm-2">
-							<a href="#">About</a>
+							<a href="{% url 'about' %}">About</a>
 						</li>
 						<li class="list-inline-item px-0 px-sm-2">
-							<a href="#">Blog</a>
+							<a href="{% url 'blog:post_list' %}">Blog</a>
 						</li>
 					</ul>
 				</div>
