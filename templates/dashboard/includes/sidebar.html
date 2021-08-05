@@ -5,12 +5,12 @@
         <div class="user-card d-flex d-md-none justify-content-between justify-content-md-center pb-4">
             <div class="d-flex align-items-center">
                 <div class="avatar-lg me-4">
-                    <img src="{% static 'dashboard/assets/img/team/profile-picture-3.jpg' %}"
-                        class="card-img-top rounded-circle border-white" alt="Bonnie Green">
+                    <img src="{{ request.user.profile.avatar.url }}"
+                        class="card-img-top rounded-circle border-white" alt="{{request.user.username}}">
                 </div>
                 <div class="d-block">
-                    <h2 class="h5 mb-3">Hi, Jane</h2>
-                    <a href="sign-in.html"
+                    <h2 class="h5 mb-3">Hi, {{ request.user.username }}</h2>
+                    <a href="{% url 'logout' %}"
                         class="btn btn-secondary btn-sm d-inline-flex align-items-center">
                         <svg
                             class="icon icon-xxs me-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"
@@ -40,8 +40,8 @@
         </div>
 
         <ul class="nav flex-column pt-3 pt-md-0">
-            <li class="nav-item">
-                <a href="dashboard.html" class="nav-link d-flex align-items-center">
+            <li class="nav-item {% if '/dashboard/me/' == request.path %}active{% endif %}">
+                <a href="{% url 'dashboard' %}" class="nav-link d-flex align-items-center">
                     <span class="sidebar-icon">
                         <i class="fas fa-chart-pie pt-2"></i>
                     </span>
@@ -64,7 +64,7 @@
                 </span>
                 <div class="multi-level collapse show" role="list" id="submenu-dashboard" aria-expanded="false">
                     <ul class="flex-column nav">
-                        <li class="nav-item active">
+                        <li class="nav-item">
                             <a href="write_article.html" class="nav-link">
                             <span class="sidebar-icon"><i class="fas fa-feather-alt"></i></span> 
                             <span class="sidebar-text">Write an Article</Article></span>
