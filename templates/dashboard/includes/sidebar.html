@@ -41,7 +41,7 @@
 
         <ul class="nav flex-column pt-3 pt-md-0">
             <li class="nav-item {% if '/dashboard/me/' == request.path %}active{% endif %}">
-                <a href="{% url 'dashboard' %}" class="nav-link d-flex align-items-center">
+                <a href="{% url 'dashboard:dashboard' %}" class="nav-link d-flex align-items-center">
                     <span class="sidebar-icon">
                         <i class="fas fa-chart-pie pt-2"></i>
                     </span>
