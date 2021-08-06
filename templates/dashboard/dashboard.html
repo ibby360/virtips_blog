@@ -137,7 +137,7 @@
 				<div class="card h-100 border-light shadow-sm">
 					<img src="{{ article.thumbnail.url }}" class="card-img-top post-card-img" alt="...">
 					<div class="card-body">
-						<a href="article_details.html" class="text-center">
+						<a href="{% url 'dashboard:post_details' article.slug %}" class="text-center">
 							<h5 class="card-title">{{ article.title }}</h5>
 						</a>
 						<p class="card-text">{{ article.overview | truncatewords_html:10}}</p>
