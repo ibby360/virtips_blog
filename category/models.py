@@ -1,6 +1,7 @@
 from django.db import models
 from django.urls import reverse
 import blog.models
+from django.utils.text import slugify
 
 # Create your models here.
 
@@ -11,6 +12,10 @@ class Category(models.Model):
     class Meta:
         verbose_name = 'category'
         verbose_name_plural = 'categories'
+
+    def save(self, *args, **kwargs):
+        self.slug = slugify(self.category_name, allow_unicode=True)
+        super(Category, self).save(*args, **kwargs)
 
     def get_absolute_url(self):
         return reverse('blog:post_by_category', args=[self.slug])
