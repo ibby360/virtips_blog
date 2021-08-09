@@ -51,7 +51,7 @@ INSTALLED_APPS = [
     # Local apps
     'blog',
     'category',
-    'accounts',
+    'accounts.apps.AccountsConfig',
     'dashboard',
     'ckeditor',
     'ckeditor_uploader',
@@ -105,6 +105,17 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': 'virtips_db',
+#         'USER': 'admin_virtips',
+#         'PASSWORD': '2021virtips',
+#         'HOST': 'localhost',
+#         'PORT': '',
+#     }
+# }
 
 
 # Password validationdjango wysiwyg editor
@@ -173,6 +184,7 @@ MESSAGE_TAGS = {
 # CKeditor configurations
 CKEDITOR_CONFIGS = {
     'default': {
+        'width': '100%',
         'toolbar': 'full',
         'tabSpaces': 4,
         'image2_altRequired':  'true',
