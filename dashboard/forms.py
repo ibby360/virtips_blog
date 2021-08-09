@@ -60,10 +60,11 @@ class ArticleCreateForm(forms.ModelForm):
 
             'tags': TextInput(attrs={
                                      'name': "tags",
-                                     'class': "form-control",
+                                     'class': "form-select",
                                      'placeholder': "Example: sports, game, politics",
                                      'id': "tags",
-                                     'data-role': "tagsinput"
+                                     'data-allow-new': "true",
+                                     'multiple': "multiple"
                                      }),
 
             'status': Select(choices=STATUS_CHOICES,
@@ -76,4 +77,18 @@ class ArticleCreateForm(forms.ModelForm):
                                  "title": "Select Status"
                              }
                              ),
+        }
+
+class CategoryForm(forms.ModelForm):
+    class Meta:
+        model = Category
+        fields = ['category_name',]
+
+        widgets = {
+                'category_name': TextInput(attrs={
+                                         'name': "category_name",
+                                         'class': "me-sm-1 mb-sm-0 form-control form-control-lg border-gray-300",
+                                         'placeholder': "Enter Category Name",
+                                         'id': "categoryName"
+                                         }),
         }
