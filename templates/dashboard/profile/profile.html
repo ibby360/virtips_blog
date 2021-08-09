@@ -1,0 +1,123 @@
+{% extends "dashboard/layouts/base.html" %}
+
+{% block title %} Add Category {% endblock %} 
+{% load static %}
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}
+	{{ block.super }}
+{% endblock stylesheets %}
+
+{% block content %}
+
+		<main class="content">
+			{% include 'dashboard/includes/navigation.html' %}
+
+			<!-- Add Button -->
+			<div class="py-4">
+				<div class="dropdown">
+					<button class="btn btn-gray-800 d-inline-flex align-items-center me-2 dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						<span class="icon icon-xs me-2">
+							<i class="fas fa-plus"></i>
+						</span>
+						Add New..
+					</button>
+					<div class="dropdown-menu dashboard-dropdown dropdown-menu-start mt-2 py-1">
+						<a class="dropdown-item d-flex align-items-center" href="write_article.html">
+							<span class="dropdown-icon text-gray-400 me-2 ">
+								<i class="fas fa-feather-alt"></i>
+							</span>
+						 Add Article
+						</a>
+						<a class="dropdown-item d-flex align-items-center" href="category.html">
+							<span class="dropdown-icon text-gray-400 me-2 ">
+								<i class="fas fa-layer-group"></i>
+							</span>
+							 Add Category
+						</a>
+					</div>
+				</div>
+			</div>
+			<!-- xxxxxxxxxxxx -->
+
+			<section class="mb-4">
+				<div class="card border-0 shadow mx-auto">
+					<div class="cover-img">
+						<img src="{{ authorprofile.cover_photo.url }}" alt="">
+					</div>
+					<div class="card-body">
+						<div class="text-center">
+							<img src="{{ authorprofile.avatar.url }}" class="avatar-xl rounded-circle mx-auto mt-n7 mb-4" alt="">
+							<h4 class="h3">{{ authorprofile.full_name| title  }}</h4>
+							<h5 class="fw-normal">{{ authorprofile.jobtitle | title }}</h5>
+							<p class="text-gray">{{ authorprofile.city | title }}, {{ authorprofile.country | title }}</p>
+							<a href="{% url 'dashboard:author-settings' %}" class="btn btn-sm btn-gray-800 d-inline-flex align-items-center me-2">
+								<i class="fas fa-user-edit icon-xs me-1"></i> Update Profile
+							</a>
+							<a href="/" class="btn btn-sm btn-secondary">
+								<i class="fab fa-telegram-plane icon-xs me-1"></i> Visit Website
+							</a>
+						</div>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-sm-6">
+						<div class="card border-0 shadow mx-auto mt-4 bg-gray-700 text-white">
+							<div class="card-body">
+								<h2 class="h4 mb-4 text-center">General information</h2>
+								<div>
+									<h3 class="h5">Full Name: <span class="text-gray lead">{{ authorprofile.full_name | title }}</span></h3>
+									<h3 class="h5">Username: <span class="text-gray lead">{{ authorprofile.user.username | capfirst }}</span></h3>
+									<h3 class="h5">Email: <span class="text-gray lead">{{ authorprofile.user.email }}</span></h3>
+									<h3 class="h5">Gender: <span class="text-gray lead">{{ authorprofile.gender | capfirst }}</span></h3>
+									<h3 class="h5">Job Title: <span class="text-gray lead">{{ authorprofile.jobtitle | title }}</span></h3>
+									<h3 class="h5">City: <span class="text-gray lead">{{ authorprofile.city | title }}</span></h3>
+									<h3 class="h5">Country: <span class="text-gray lead">{{ authorprofile.country | title }}</span></h3>
+									
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-sm-6">
+						<div class="card border-0 shadow mx-auto mt-4 bg-gray-900 text-white">
+							<div class="card-body">
+								<h2 class="h4 mb-4 text-center">Biography</h2>
+								<div>
+									<p>
+										{{ authorprofile.bio }}
+									</p>
+									<div class="text-center social-media">
+										<ul class="list-inline">
+											<li>
+												<a href="{{ authorprofile.facebook_url }}" target="_blank" class="color-facebook">
+													<i class="fab fa-facebook-f"></i>
+												</a>
+											</li>
+											<li>
+												<a href="{{ authorprofile.instagram_url }}" target="_blank" class="color-instagram">
+													<i class="fab fa-instagram"></i>
+												</a>
+											</li>
+											<li>
+												<a href="{{ authorprofile.twitter_url }}" target="_blank" class="color-twitter">
+													<i class="fab fa-twitter"></i>
+												</a>
+											</li>
+											<li>
+												<a href="{{ authorprofile.linkedin_url }}" target="_blank" class="color-linkedin">
+													<i class="fab fa-linkedin-in"></i>
+												</a>
+											</li>
+										</ul>
+									</div>
+									
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+
+
+        </main>
+{% endblock content %}
