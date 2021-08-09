@@ -1,0 +1,216 @@
+{% extends "dashboard/layouts/base.html" %}
+
+{% block title %} Add Category {% endblock %} 
+{% load static %}
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}
+	{{ block.super }}
+{% endblock stylesheets %}
+
+{% block content %}
+
+		<main class="content">
+			{% include 'dashboard/includes/navigation.html' %}
+
+		<!-- Add Button -->
+		<div class="row mt-4 mb-3">
+			<div class="col-6 d-flex justify-content-between">
+				<div class="me-lg-3">
+					<div class="dropdown">
+						<button class="btn btn-secondary d-inline-flex align-items-center me-2 dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							<span class="icon icon-xs me-2">
+								<i class="fas fa-plus"></i>
+							</span>
+							Add New...
+						</button>
+						<div class="dropdown-menu dashboard-dropdown dropdown-menu-start mt-2 py-1">
+								<a class="dropdown-item d-flex align-items-center" href="{% url 'dashboard:article-create' %}">
+									<span class="dropdown-icon text-gray-400 me-2 ">
+										<i class="fas fa-feather-alt"></i>
+									</span>
+									Add Article
+								</a>
+								<a class="dropdown-item d-flex align-items-center" href="{% url 'dashboard:add-category' %}">
+									<span class="dropdown-icon text-gray-400 me-2 ">
+										<i class="fas fa-layer-group"></i>
+									</span>
+									Add Category
+								</a>
+							</div>
+						</div>
+				</div>
+			</div>
+			<div class="col-6 text-end">
+				<div class="btn-group">
+					<a href="{% url 'dashboard:author-profile' %}" class="btn btn-gray-800">
+						<span class="text-white">
+							<i class="pe-2 fas fa-user"></i>
+							View Profile
+						</span>
+					</a> 
+					
+				</div>
+			</div>
+		</div>
+		<!-- xxxxxxxxxxxx -->
+
+			<!-- Profile Setup Settings -->
+			<form class="row" method="POST", action="{% url 'dashboard:author-settings' %}" enctype="multipart/form-data">
+				{% csrf_token %}
+				<div class="col-12 col-xl-8">
+
+					<!-- Profile update form -->
+				  	<div class="card card-body border-0 shadow mb-4">
+				  		<h2 class="h5 mb-4">General information</h2>
+				  		<div class="row">
+				  			<div class="col-md-6 mb-3">
+				  				<div>
+				  					<label for="first_name">First Name</label>
+									{{ profile_form.first_name }}
+				  				</div>
+				  			</div>
+				  			<div class="col-md-6 mb-3">
+				  				<div>
+				  					<label for="last_name">Last Name</label>
+									{{ profile_form.last_name }}
+				  				</div>
+				  			</div>
+				  		</div>
+				  		<div class="row align-items-center">
+				  			<div class="col-md-6 mb-3">
+				  				<label for="username">Username</label>
+								{{ user_form.username }}
+				  			</div>
+				  			<div class="col-md-6 mb-3">
+				  				<label for="gender">Gender</label>
+				  				{{ profile_form.gender }}
+							</div>
+				  		</div>
+				  		<div class="row">
+				  			<div class="col-md-6 mb-3">
+				  				<div class="form-group">
+				  					<label for="email">Email</label>
+									{{ user_form.email }}
+				  				</div>
+				  			</div>
+				  			<div class="col-md-6 mb-3">
+				  				<div class="form-group">
+				  					<label for="jobtitle">Job Title</label>
+				  					{{ profile_form.jobtitle }}
+								</div>
+				  			</div>
+				  			<div class="mb-3 col-md-12">
+				  				<label for="bio">Biography</label>
+								{{ profile_form.bio }}
+				  			</div>
+				  		</div>
+				  		<h2 class="h5 my-4">Location</h2>
+				  		<div class="row">
+				  			<div class="col-sm-6 mb-3">
+				  				<div class="form-group">
+				  					<label for="city">City</label>
+									{{ profile_form.city }}
+				  				</div>
+				  			</div>
+				  			<div class="col-sm-6 mb-3">
+				  				<div class="form-group"><label for="number">Country</label>
+				  					{{ profile_form.country }}
+				  				</div>
+				  			</div>
+				  		</div>
+				  		<h2 class="h5 my-4">Social Links</h2>
+				  		<div class="row">
+				  			<div class="col-sm-3 mb-3">
+				  				<div class="form-group">
+				  					<label for="facebook">Facebook</label>
+									{{ profile_form.facebook_url }}
+				  				</div>
+				  			</div>
+				  			<div class="col-sm-3 mb-3">
+				  				<div class="form-group">
+				  					<label for="instagram">Instagram</label>
+									{{ profile_form.instagram_url }}
+				  				</div>
+				  			</div>
+				  			<div class="col-sm-3 mb-3">
+				  				<div class="form-group">
+				  					<label for="twitter">Twitter</label>
+									{{ profile_form.twitter_url }}
+				  				</div>
+				  			</div>
+				  			<div class="col-sm-3 mb-3">
+				  				<div class="form-group">
+				  					<label for="linkedin">Linkedin</label>
+									{{ profile_form.linkedin_url }}
+				  				</div>
+				  			</div>
+				  		</div>
+				  		{% comment %} <div class="mt-3"><button class="btn btn-gray-800 mt-2 animate-up-2" type="submit">Save all</button></div> {% endcomment %}
+				  	</div>
+					<!-- xxxxxxxxxxxxxxxxxxx -->
+				</div>
+
+				<div class="col-12 col-xl-4">
+				  	<div class="row">
+
+						  <!-- Select Pfofile Photo -->
+				  		<div class="col-12">
+				  			<div class="card card-body border-0 shadow mb-4">
+				  				<h2 class="h5 mb-4">Select profile photo</h2>
+				  				<div class="d-flex align-items-center">
+				  					<div class="me-3"> <img class="rounded avatar-xl"
+				  							src="{{ authorprofile.avatar.url }}" alt="change avatar"></div>
+				  					<div class="file-field">
+				  						<div class="d-flex justify-content-xl-center ms-xl-3">
+				  							<div class="d-flex"><svg class="icon text-gray-500 me-2" fill="currentColor"
+				  									viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+				  									<path fill-rule="evenodd"
+				  										d="M8 4a3 3 0 00-3 3v4a5 5 0 0010 0V7a1 1 0 112 0v4a7 7 0 11-14 0V7a5 5 0 0110 0v4a3 3 0 11-6 0V7a1 1 0 012 0v4a1 1 0 102 0V7a3 3 0 00-3-3z"
+				  										clip-rule="evenodd"></path>
+				  								</svg> 
+												{{ profile_form.avatar }}
+				  								<div class="d-md-block text-left">
+				  									<div class="fw-normal text-dark mb-1">Choose Image</div>
+				  									<div class="text-gray small">JPG, JPEG or PNG. Max size of 800K</div>
+				  								</div>
+				  							</div>
+				  						</div>
+				  					</div>
+				  				</div>
+				  			</div>
+				  		</div>
+
+						  <!-- Select Cover Photo -->
+				  		<div class="col-12 col-sm-6 col-xl-12">
+				  			<div class="card card-body border-0 shadow mb-4">
+				  				<h2 class="h5 mb-4">Select cover photo</h2>
+				  				<div class="d-flex align-items-center">
+				  					<div class="me-3"> <img class="rounded avatar-xl" src="{{ authorprofile.cover_photo.url }}"
+				  							alt="change cover"></div>
+				  					<div class="file-field">
+				  						<div class="d-flex justify-content-xl-center ms-xl-3">
+				  							<div class="d-flex"><svg class="icon text-gray-500 me-2" fill="currentColor"
+				  									viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+				  									<path fill-rule="evenodd"
+				  										d="M8 4a3 3 0 00-3 3v4a5 5 0 0010 0V7a1 1 0 112 0v4a7 7 0 11-14 0V7a5 5 0 0110 0v4a3 3 0 11-6 0V7a1 1 0 012 0v4a1 1 0 102 0V7a3 3 0 00-3-3z"
+				  										clip-rule="evenodd"></path>
+				  								</svg> 
+												{{ profile_form.cover_photo }}
+				  								<div class="d-md-block text-left">
+				  									<div class="fw-normal text-dark mb-1">Choose Image</div>
+				  									<div class="text-gray small">JPG, JPEG or PNG. Max size of 800K</div>
+				  								</div>
+				  							</div>
+				  						</div>
+				  					</div>
+				  				</div>
+				  			</div>
+				  		</div>
+				  	</div>
+				</div>
+				<!-- xxxxxxxxxxxxxxxxxxx -->
+				<div class="mb-3"><button class="btn btn-gray-800 mt-2 animate-up-2" type="submit">Save all</button></div>
+			</form>
+
+        </main>
+{% endblock content %}
