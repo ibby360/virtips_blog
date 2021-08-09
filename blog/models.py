@@ -1,3 +1,4 @@
+from django.db.models.fields import BLANK_CHOICE_DASH
 from accounts.models import Account
 from django.db import models
 from django.conf import settings
@@ -15,13 +16,38 @@ class PublishedManager(models.Manager):
         return super().get_queryset().filter(status='published')
 
 class Author(models.Model):
+    GENDER_CHOICES = (
+        ('male', 'Male'),
+        ('female', 'Female'),
+    )
+
+    COUNTRIES = (
+        ('kenya', 'Kenya'),
+        ('netherlands', 'Netherlands'),
+        ('south africa', 'South Africa'),
+        ('tanzania', 'Tanzania'),
+        ('uganda', 'Uganda'),
+    )
     user = models.OneToOneField(settings.AUTH_USER_MODEL,on_delete=models.CASCADE, related_name='profile')
-    name = models.CharField(max_length=50)
+    first_name = models.CharField(max_length=50)
+    last_name = models.CharField(max_length=50, blank=True, default='')
+    gender = models.CharField(max_length=50, choices=GENDER_CHOICES, default='')
+    jobtitle = models.CharField(max_length=150, blank=True)
     bio = models.TextField(blank=True)
-    avatar = models.ImageField(upload_to='avatars', default='img/author/default-profile.png')
+    avatar = models.ImageField(upload_to='avatars', default='avatars/default-profile.png')
+    cover_photo = models.ImageField(upload_to='profile', blank=True, default='avatars/default-profile.png')
+    city = models.CharField(max_length=150, blank=True)
+    country = models.CharField(max_length=150, choices=COUNTRIES, default='')
+    facebook_url = models.CharField(max_length=50, blank=True, default='#')
+    instagram_url = models.CharField(max_length=50, blank=True, default='#')
+    twitter_url = models.CharField(max_length=50, blank=True, default='#')
+    linkedin_url = models.CharField(max_length=50, blank=True, default='#')
 
     def __str__(self):
         return self.user.username
+
+    def full_name(self):
+        return f'{self.first_name} {self.last_name}'
 
 class Post(models.Model):
     STATUS_CHOICES = (
