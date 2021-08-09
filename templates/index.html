@@ -44,12 +44,95 @@
     </section>
     <!--/-->
 
+<!--grid-layout-->
+    <section class="section">
+        <div class="container-fluid grid-container">
+            <div class="mb-5 text-start" data-aos="fade-right">
+                <h3>Popular Posts</h4>
+                <span class="line"></span>
+                {% comment %} <p>Don't miss to check out our most popular posts</p> {% endcomment %}
+            </div>
+            <div class="row">
+                <div class="col-lg-6 col-md-6">
+                    <!--Post-1-->
+                    <div class="post-card" data-aos="fade-right" data-aos-duration="3000">
+                        <div class="post-card-image">
+                            <a href="post.html">
+                                <img src="{% static 'img/blog/7.jpg' %}" alt="">
+                            </a>
+        
+                        </div>
+                        <div class="post-card-content">
+                            <a href="blog.html" class="categorie">Food</a>
+                            <h5>
+                                <a href="post.html">7 Dinner Recipes for a Date Night at Home </a>
+                            </h5>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit quam atque ipsa laborum sunt distinctio...
+                            </p>
+                            <div class="post-card-info">
+                                <ul class="list-inline">
+                                    <li>
+                                        <a href="author.html">
+                                            <img src="assets/img/author/1.jpg" alt="">
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="author.html">David Smith</a>
+                                    </li>
+                                    <li class="dot"></li>
+                                    <li>January 15, 2021</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <!--/-->
+                </div>
+                <div class="col-lg-6 col-md-6">
+                    <!--Post-2-->
+                    <div class="post-card" data-aos="fade-left" data-aos-duration="3000">
+                        <div class="post-card-image">
+                            <a href="post.html">
+                                <img src="{% static 'img/blog/14.jpg' %}" alt="">
+                            </a>
+                        </div>
+                        <div class="post-card-content">
+                            <a href="blog.html" class="categorie">travel</a>
+                            <h5>
+                                <a href="post.html"> 10 Best and Most Beautiful Places to Visit in Italy
+                                </a>
+                            </h5>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit quam atque ipsa laborum sunt distinctio...
+                            </p>
+                            <div class="post-card-info">
+                                <ul class="list-inline">
+                                    <li>
+                                        <a href="author.html">
+                                            <img src="assets/img/author/1.jpg" alt="">
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="author.html">David Smith</a>
+                                    </li>
+                                    <li class="dot"></li>
+                                    <li>January 15, 2021</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <!--/-->
+                </div>
+            </div>
+        </div>
+    </section>
+
+
     <!--masonry-layout-->
     <section class="mt-40 masonry-layout">
         <div class="container-fluid">
         {% if posts %}
             <div class="mb-20 text-start">
                 <h3>Recent Posts</h4>
+                <span class="line"></span>
             </div>
             <div class="row"  data-aos="fade-up" data-aos-duration="3000">
                 <div class="col-lg-12">
@@ -79,7 +162,7 @@
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="{% url 'blog:author' post.author.user.username%}">{{post.author.name}}</a>
+                                                <a href="{% url 'blog:author' post.author.user.username%}">{{post.author.full_name}}</a>
                                             </li>
                                             <li class="dot"></li>
                                             <li>{{post.publish | date}}</li>

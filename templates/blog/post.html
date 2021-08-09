@@ -24,7 +24,7 @@
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="{% url 'blog:author' post.author.user.username%}">{{post.author.name}}</a> 
+                                        <a href="{% url 'blog:author' post.author.user.username%}">{{post.author.full_name}}</a> 
                                     </li>
                                     <li class="dot"></li>
                                     <li>
@@ -109,7 +109,7 @@
                                     <img src="{{post.author.avatar.url}}" alt="">
                                 </a>
                                 <h6>
-                                    <span>Hi, I'm {{post.author.name}}</span>
+                                    <span>Hi, I'm {{post.author.full_name}}</span>
                                 </h6>
                                 <p>{{post.author.bio | truncatewords_html:30}}</p>
                         
