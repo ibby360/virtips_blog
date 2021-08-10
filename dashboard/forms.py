@@ -3,8 +3,9 @@ from django.forms import TextInput, FileInput, Select
 from django.forms.widgets import Textarea
 from ckeditor_uploader.widgets import CKEditorUploadingWidget
 
-from blog.models import Post
+from blog.models import Post, Author
 from category.models import Category
+from accounts.models import Account
 
 class ArticleCreateForm(forms.ModelForm):
     category = forms.ModelChoiceField(queryset=Category.objects.all(),
@@ -92,3 +93,120 @@ class CategoryForm(forms.ModelForm):
                                          'id': "categoryName"
                                          }),
         }
+
+class UserForm(forms.ModelForm):
+
+    class Meta:
+        model = Account
+        fields = ('username', 'email',)
+
+    def __init__(self, *args, **kwargs):
+        super(UserForm, self).__init__(*args, **kwargs)
+        self.fields['username'].widget.attrs['placeholder'] = 'Enter Your Username'
+        self.fields['email'].widget.attrs['placeholder'] = 'name@company.com'
+        for field in self.fields:
+            self.fields[field].widget.attrs['class'] = 'form-control'
+
+class AuthorProfileForm(forms.ModelForm):
+
+    class Meta:
+        model = Author
+        fields = ('first_name', 'last_name', 'gender', 'jobtitle', 'bio', 'avatar', 'cover_photo',
+                  'city', 'country', 'facebook_url', 'instagram_url', 'twitter_url', 'linkedin_url',)
+
+        widgets = {
+
+            'first_name': forms.TextInput(attrs={
+                'name': "first-name",
+                'class': "form-control",
+                'id': "firstName",
+                'placeholder': "Enter your FirstName"
+            }),
+
+            'last_name': forms.TextInput(attrs={
+                'name': "last-name",
+                'class': "form-control",
+                'id': "lastName",
+                'placeholder': "Also your last name"
+            }),
+
+            'jobtitle': forms.TextInput(attrs={
+                'name': "job-title",
+                'class': "form-control",
+                'id': "job-title",
+                'placeholder': "Senior Software Engineer"
+            }),
+
+            'bio': forms.Textarea(attrs={
+                'name': "bio",
+                'class': "form-control",
+                'id': "bio",
+                'rows': "4",
+                'placeholder': "Enter Your Biography"
+            }),
+
+            'gender': forms.Select(attrs={
+                'name': "address",
+                'class': "form-select mb-0",
+                'id': "address",
+                'placeholder': "Your Gender"
+            }),
+
+            'city': forms.TextInput(attrs={
+                'name': "city",
+                'class': "form-control",
+                'id': "city",
+                'placeholder': "Enter Your City"
+            }),
+
+            'country': forms.Select(attrs={
+                'name': "country",
+                'class': "form-select w-100 mb-0",
+                'id': "country",
+                'select': "Select Your Country"
+            }),
+
+            'avatar': forms.FileInput(attrs={
+                "class": "form-control clearablefileinput",
+                "type": "file",
+                "id": "profileImage",
+            }),
+
+            'cover_photo': forms.FileInput(attrs={
+                "class": "form-control clearablefileinput",
+                "type": "file",
+                "id": "bannerImage",
+            }),
+
+            'facebook_url': forms.TextInput(attrs={
+                'name': "facebook-account-url",
+                'class': "form-control",
+                'id': "faceboolAccountUrl",
+                'placeholder': "https://facebook.com/username"
+            }),
+
+            'twitter_url': forms.TextInput(attrs={
+                'name': "twitter-account-url",
+                'class': "form-control",
+                'id': "twitterAccountUrl",
+                'placeholder': "https://twitter.com/username"
+            }),
+
+            'instagram_url': forms.TextInput(attrs={
+                'name': "instagram-account-url",
+                'class': "form-control",
+                'id': "instagramAccountUrl",
+                'placeholder': "https://instagram.com/username"
+            }),
+
+            'linkedin_url': forms.TextInput(attrs={
+                'name': "linkedin-account-url",
+                'class': "form-control",
+                'id': "linkedinAccountUrl",
+                'placeholder': "https://linkedin.com/username"
+            }),
+
+        }
+
+
+
