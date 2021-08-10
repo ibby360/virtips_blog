@@ -1,6 +1,6 @@
 from category.models import Category
 from django.urls import reverse
-from django.shortcuts import render, get_object_or_404, redirect, HttpResponse
+from django.shortcuts import render, get_object_or_404, redirect, HttpResponseRedirect
 from blog.models import Post, Author
 from django.contrib.auth.decorators import login_required
 from dashboard.forms import ArticleCreateForm, CategoryForm, UserForm, AuthorProfileForm
@@ -87,6 +87,9 @@ def edit_blog_post(request, slug):
     form = ArticleCreateForm(request.POST or None,
                              request.FILES or None, instance=post)
     author = get_object_or_404(Author, user_id=request.user.id)
+    if not request.user.username == post.author.user.username:
+        messages.error(request, message="You do not have permission to edit this post.")
+        return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
     if request.method == "POST":
         if form.is_valid():
             form.instance.author = author
@@ -95,10 +98,23 @@ def edit_blog_post(request, slug):
             form.save()
             return redirect(reverse('dashboard:post_details', kwargs={'slug': form.instance.slug}))
     context = {
-        'form': form
+        'form': form,
+        'post': post
     }
     return render(request, 'dashboard/blog/update_article.html', context)
 
+
+@login_required(login_url='login')
+def delete_post(request, slug):
+    post = get_object_or_404(Post, slug=slug)
+
+    if not request.user.username == post.author.user.username:
+        messages.error(request, message="You do not have permission to delete this post.")
+        return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
+    post.delete()
+    messages.success(request,
+                     message="Article Deleted Successfully")
+    return redirect('dashboard:dashboard')
 
 @login_required(login_url='login')
 def create_category(request):
