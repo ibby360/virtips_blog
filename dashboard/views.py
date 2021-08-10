@@ -3,10 +3,9 @@ from django.urls import reverse
 from django.shortcuts import render, get_object_or_404, redirect, HttpResponse
 from blog.models import Post, Author
 from django.contrib.auth.decorators import login_required
-from dashboard.forms import ArticleCreateForm, CategoryForm
+from dashboard.forms import ArticleCreateForm, CategoryForm, UserForm, AuthorProfileForm
 from django.contrib import messages
 from django.utils import timezone
-from django.views.generic import View
 
 
 # Create your views here.
@@ -122,9 +121,30 @@ def create_category(request):
 
 @login_required(login_url='login')
 def author_settings(request):
-	return render(request, 'dashboard/profile/settings.html')
+    authorprofile = get_object_or_404(Author, user=request.user)
+    if request.method == 'POST':
+        user_form = UserForm(request.POST, instance=request.user)
+        profile_form = AuthorProfileForm(request.POST, request.FILES, instance=authorprofile)
+        if user_form.is_valid() and profile_form.is_valid():
+            user_form.save()
+            profile_form.save()
+            messages.success(request, 'Your profile has been updated.')
+            return redirect('dashboard:author-profile')
+    else:
+        user_form = UserForm(instance=request.user)
+        profile_form = AuthorProfileForm(instance=authorprofile)
+    context = {
+        'user_form': user_form,
+        'profile_form': profile_form,
+        'authorprofile': authorprofile,
+    }
+    return render(request, 'dashboard/profile/settings.html', context)
 
 
 @login_required(login_url='login')
 def author_profiile(request):
-	return render(request, 'dashboard/profile/profile.html')
+    authorprofile = get_object_or_404(Author, user=request.user)
+    context = {
+        'authorprofile': authorprofile
+    }
+    return render(request, 'dashboard/profile/profile.html', context)
