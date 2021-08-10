@@ -1,0 +1,76 @@
+{% extends "dashboard/layouts/base.html" %}
+
+{% block title %} Write a New Article {% endblock %} 
+{% load static %}
+<!-- Specific Page CSS goes HERE  -->
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{% static "dashboard/css/tagsinput.css" %}">
+{% endblock stylesheets %}
+{% block javascript %}
+	{{ block.super }}
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+        <script type="text/javascript" src="{% static "ckeditor/ckeditor-init.js" %}"></script>
+        <script type="text/javascript" src="{% static "ckeditor/ckeditor/ckeditor.js" %}"></script>
+{% endblock javascript %}
+
+{% block content %}
+
+
+		<main class="content">
+			{% include 'dashboard/includes/navigation.html' %}
+
+            <!-- Article Form -->
+            <section class="py-5">
+				<div class="pb-2">
+					<h4>Write A New Article</h4>
+				</div>
+                <div class="card border-0 shadow mx-auto">
+                    <div class="card-body mt-2">
+                        <div class="mx-3">
+                            <form action="{% url 'dashboard:edit-post' post.slug %}" method="POST" enctype="multipart/form-data">
+								{% csrf_token %}
+								{{form.media}}
+                                <div class="row g-3">
+                                    <div class="my-2 col-md-6">
+                                        <label for="exampleFormControlInput1" class="form-label">Title</label>
+                                        {{ form.title }}
+                                    </div>
+                                    <div class="my-2 col-md-6">
+                                        <label class="my-1 me-2" for="state">Category</label>
+                                        {{ form.category }}
+                                    </div>
+                                    <div class="my-2 col-md-6">
+                                        <label for="exampleFormControlInput1" class="form-label">Tags</label>
+                                        {{ form.tags }}
+                                    </div>
+                                    <div class="my-2 col-md-6">
+                                        <label for="formFile" class="form-label">Thumbnail</label>
+                                        {{ form.thumbnail }}
+                                    </div>
+                                    <div class="my-2 col-md-12">
+                                        <label for="textarea">Article Overview</label>
+                                        {{ form.overview }}
+                                    </div>
+                                    <div class="my-2 col-md-12">
+                                        {% comment %} <label for="textarea">Content</label> {% endcomment %}
+                                        {{ form.body }}
+                                    </div>
+									<div class="my-2 col-md-12">
+                                        <label class="my-1 me-2" for="state">Status</label>
+                                        {{ form.status }}
+                                    </div>
+									<div class="input-group float-start">
+										<div class="my-2 pe-2">
+											<button class="btn btn-success" type="submit">SAVE</button>
+										</div>
+									</div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </section>
+                
+        </main>
+{% endblock content %}  
