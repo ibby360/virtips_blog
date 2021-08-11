@@ -177,7 +177,7 @@
 		<div class="py-4 text-center">
 			<img src="{% static 'dashboard/assets/img/illustrations/not_found_60pq.svg' %}" class="pb-3" alt="">
 			<p>This is where you can manage your posts, but you haven't written anything yet.</p>
-			<a href="" class="btn btn-gray-800 text-white">Write your first post now</a>
+			<a href="{% url 'dashboard:article-create' %}" class="btn btn-gray-800 text-white">Write your first post now</a>
 		</div>
 		{% endif %}
 		
