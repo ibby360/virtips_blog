@@ -84,24 +84,31 @@ def drafted_articles(request):
 @login_required(login_url='login')
 def edit_blog_post(request, slug):
     post = get_object_or_404(Post, slug=slug)
+    if not request.user.username == post.author.user.username:
+        messages.error(
+            request, message="You do not have permission to edit this post.")
+        return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
+
     form = ArticleCreateForm(request.POST or None,
                              request.FILES or None, instance=post)
     author = get_object_or_404(Author, user_id=request.user.id)
-    if not request.user.username == post.author.user.username:
-        messages.error(request, message="You do not have permission to edit this post.")
-        return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
     if request.method == "POST":
         if form.is_valid():
-            form.instance.author = author
-            form.publish = timezone.now()
-            form.updated = timezone.now()
-            form.save()
+            updated_article = form.save(commit=False)
+            updated_article.author = author
+            updated_article.publish = timezone.now()
+            updated_article.updated = timezone.now()
+            updated_article.save()
+            form.save_m2m()
             return redirect(reverse('dashboard:post_details', kwargs={'slug': form.instance.slug}))
+        else:
+            messages.error(request, "Please fill required fields")
     context = {
         'form': form,
         'post': post
     }
     return render(request, 'dashboard/blog/update_article.html', context)
+
 
 
 @login_required(login_url='login')
