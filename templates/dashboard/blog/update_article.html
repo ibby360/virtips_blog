@@ -35,17 +35,26 @@
                                     <div class="my-2 col-md-6">
                                         <label for="exampleFormControlInput1" class="form-label">Title</label>
                                         {{ form.title }}
+                                        <div class="pt-2 text-danger">
+											{{ form.title.errors }}
+										</div>
                                     </div>
                                     <div class="my-2 col-md-6">
                                         <label class="my-1 me-2" for="state">Category</label>
                                         {{ form.category }}
+                                        <div class="pt-2 text-danger">
+											{{ form.category.errors }}
+										</div>
                                     </div>
                                     <div class="my-2 col-md-6">
                                         <label for="exampleFormControlInput1" class="form-label">Tags</label>
-                                        {{ form.tags }}
+                                        <input type="text" class="form-control" name="tags" id="tags" value="{% for tag in post.tags.all %}{{ tag }}, {% endfor %}" placeholder="Example: sports, game, politics">
                                     </div>
                                     <div class="my-2 col-md-6">
                                         <label for="formFile" class="form-label">Thumbnail</label>
+                                        <small>
+                                            <a href="{{ post.thumbnail.url }}" class="disabled small">{{ post.thumbnail.url }}</a>
+                                        </small>
                                         {{ form.thumbnail }}
                                     </div>
                                     <div class="my-2 col-md-12">
@@ -53,7 +62,7 @@
                                         {{ form.overview }}
                                     </div>
                                     <div class="my-2 col-md-12">
-                                        {% comment %} <label for="textarea">Content</label> {% endcomment %}
+                                        <label for="textarea">Content</label>
                                         {{ form.body }}
                                     </div>
 									<div class="my-2 col-md-12">
@@ -62,6 +71,7 @@
                                     </div>
 									<div class="input-group float-start">
 										<div class="my-2 pe-2">
+											<a class="btn btn-danger" href="{% url 'dashboard:published-articles' %}">CANCEL</a>
 											<button class="btn btn-success" type="submit">SAVE</button>
 										</div>
 									</div>
