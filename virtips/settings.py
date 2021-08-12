@@ -234,8 +234,6 @@ CKEDITOR_CONFIGS = {
 ACTIVE_LINK_STRICT = True
 ACTIVE_LINK_CSS_CLASS = False
 
-# Taggit configurations
-TAGGIT_CASE_INSENSITIVE = True
 
 # SMTP configuration
 EMAIL_HOST = 'smtp.gmail.com'
