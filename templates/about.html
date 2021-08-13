@@ -63,10 +63,10 @@
                             <li class="last-post">
                                 <div class="image">
                                     <a href="{{post.get_absolute_url}}">
-                                        <img src="{{post.thumbnail.url}}" alt="...">
+                                        <img src="{{post.thumbnail.url}}" alt="{{ post.title }}">
                                     </a>
                                 </div>
-                                <div class="nb">1</div>
+                                <div class="nb">{{ forloop.counter }}</div>
                                 <div class="content">
                                     <p>
                                         <a href="{{post.get_absolute_url}}">{{post.title}}</a>
@@ -79,7 +79,7 @@
 
                         </ul>
                     </div>
-                    {% endif %}
+                {% endif %}
                     <!--/-->
 
                     <!--widget-categories-->
@@ -99,44 +99,25 @@
                     </div>
                     {% endif %}
                 
-                    <!--widget-instagram-->
+                    <!--widget-author-->
+                    {% if authors %}
                     <div class="widget" data-aos="fade-up" data-aos-duration="3000">
                         <div class="section-title">
-                            <h5>Instagram</h5>
+                            <h5>Authors</h5>
                         </div>
-                        <ul class="widget-instagram">
+                        <ul class="widget-authors">
+                        {% for author in authors %}
                             <li>
-                                <a class="image" href="#">
-                                    <img src="{% static 'img/instagram/1.jpg' %}" alt="">
+                                <a class="image" href="{% url 'blog:author' author.user.username%}">
+                                    <span class="author-pic">
+                                        <img src="{{ author.avatar.url }}" alt="{{ author.user.username }}'s profile picture">
+                                    </span>
                                 </a>
                             </li>
-                            <li>
-                                <a class="image" href="#">
-                                    <img src="{% static 'img/instagram/2.jpg' %}" alt="">
-                                </a>
-                            </li>
-                            <li>
-                                <a class="image" href="#">
-                                    <img src="{% static 'img/instagram/3.jpg' %}" alt="">
-                                </a>
-                            </li>
-                            <li>
-                                <a class="image" href="#">
-                                    <img src="{% static 'img/instagram/4.jpg' %}" alt="">
-                                </a>
-                            </li>
-                            <li>
-                                <a class="image" href="#">
-                                    <img src="{% static 'img/instagram/5.jpg' %}" alt="">
-                                </a>
-                            </li>
-                            <li>
-                                <a class="image" href="#">
-                                    <img src="{% static 'img/instagram/6.jpg' %}" alt="">
-                                </a>
-                            </li>
+                        {% endfor %}
                         </ul>
                     </div>
+                    {% endif %}
                     <!--/-->
                 </div>
             </div>
