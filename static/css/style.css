@@ -1313,7 +1313,7 @@ input:checked + .slider:before {
   margin-bottom: 0px;
 }
 
-.widget-instagram {
+.widget-authors {
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: auto auto auto;
@@ -1323,18 +1323,18 @@ input:checked + .slider:before {
   grid-gap: 10px;
 }
 
-.widget-instagram li {
+.widget-authors li {
   overflow: hidden;
   border-radius: 5px;
 }
 
-.widget-instagram li img {
+.widget-authors li img {
   border-radius: 5px;
   -webkit-transition: all 0.9s ease-in-out;
   transition: all 0.9s ease-in-out;
 }
 
-.widget-instagram li img:hover {
+.widget-authors li img:hover {
   -webkit-transform: scale(1.1);
           transform: scale(1.1);
 }
@@ -2443,7 +2443,7 @@ input:checked + .slider:before {
   .hero-content h3 {
     font-size: 24px;
   }
-  .widget-instagram {
+  .widget-authors {
     -ms-grid-columns: auto auto;
         grid-template-columns: auto auto;
     -ms-grid-rows: auto auto auto;
