@@ -102,7 +102,7 @@ def edit_blog_post(request, slug):
             form.save_m2m()
             return redirect(reverse('dashboard:post_details', kwargs={'slug': form.instance.slug}))
         else:
-            messages.error(request, "Please fill required fields")
+            messages.error(request, "Please fill all the fields")
     context = {
         'form': form,
         'post': post
