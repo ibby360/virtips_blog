@@ -50,6 +50,7 @@
    
     <!--mansory-layout-->
     <section class="masonry-layout col2-layout mt-30">
+        {% if posts %}
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-12">
@@ -119,6 +120,12 @@
                
             </div>
         </div>
+        {% else %}
+            <div class="text-center mb-5">
+                <h1 class="">No Post Found.</h1>
+            </div>
+            
+        {% endif %}
     </section>
     <!--/-->
 
