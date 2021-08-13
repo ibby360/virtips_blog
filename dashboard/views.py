@@ -53,6 +53,10 @@ def create_post(request):
         obj.author = author
         obj.save()
         form.save_m2m()
+        messages.success(request,
+                     message="Article Created Successfully")
+        return redirect(reverse('dashboard:post_details', kwargs={'slug': form.instance.slug}))
+    else:
         form = ArticleCreateForm()
 
     context = {
