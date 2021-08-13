@@ -25618,34 +25618,42 @@ pre[class*=language-] {
     background-color: #1dcaff;
   }
 
-  .post-card-img {
-      width: 100%;
-      height: 70%;
-      object-fit: cover;
+  .color-whatsapp {
+    background-color: #00e676;
   }
 
-  .dot {
-    content: "";
-    display: inline-block;
-    width: 5px;
-    height: 5px;
-    border-radius: 50%;
-    background: var(--bs-secondary);
-    margin-left: 0.8rem;
-    margin-right: 0.8rem;
-    position: relative;
-  }
+.color-telegram {
+  background-color: #24a2e0;
+}
 
-  #article-image {
-    max-width: 100% !important;
-    width: 100% !important;
-    object-fit: cover !important;
-    height: 500px !important;
-    border-radius: 5px;
-  }
+.post-card-img {
+    width: 100%;
+    height: 70%;
+    object-fit: cover;
+}
 
-  @media (max-width:570px) {        
-      .stat-text {
-          display: none;
-      }
-  }
+.dot {
+  content: "";
+  display: inline-block;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--bs-secondary);
+  margin-left: 0.8rem;
+  margin-right: 0.8rem;
+  position: relative;
+}
+
+#article-image {
+  max-width: 100% !important;
+  width: 100% !important;
+  object-fit: cover !important;
+  height: 500px !important;
+  border-radius: 5px;
+}
+
+@media (max-width:570px) {        
+    .stat-text {
+        display: none;
+    }
+}
