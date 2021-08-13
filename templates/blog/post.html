@@ -162,7 +162,7 @@
                                                 <a class="link" href="{{previous_post.get_absolute_url}}">
                                                     <i class="arrow_left"></i>Preview post</a>
                                             </div>
-                                            <a href="{{previous_post.get_absolute_url}}">{{previous_post.title | truncatewords_html:10}}</a>
+                                            <a href="{{previous_post.get_absolute_url}}">{{previous_post.title | truncatechars_html:55}}</a>
                                         </div>
                                     </div>
                                 </div>
@@ -188,7 +188,7 @@
                                                     <span class="arrow_right"></span>
                                                 </a>
                                             </div>
-                                            <a href="{{next_post.get_absolute_url}}">{{next_post.title | truncatewords_html:10}}</a>
+                                            <a href="{{next_post.get_absolute_url}}">{{next_post.title | truncatechars_html:55}}</a>
                                         </div>
                                     </div>
                                 </div>
