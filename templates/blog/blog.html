@@ -63,7 +63,7 @@
                                                 <a href="{% url 'blog:author' post.author.user.username%}">{{post.author.full_name}}</a>
                                             </li>
                                             <li class="dot"></li>
-                                            <li><span class="icon_clock_alt pr-2"></span>{{post.publish | date}}</li>
+                                            <li><span class="fa fa-calendar-alt pr-2"></span>{{post.publish | date}}</li>
                                         </ul>
                                     </div>
                                 </div>
@@ -132,11 +132,7 @@
                                         <img src="{{post.thumbnail.url}}" alt="...">
                                     </a>
                                 </div>
-                                {% with ''|center:5 as range %}
-                                {% for i in range %}
-                                <div class="nb">{{forloop.counter}}</div>
-                                {% endfor %}
-                                {% endwith %}
+                                <div class="nb">{{forloop.counter }}</div>
                                 <div class="content">
                                     <p>
                                         <a href="{{post.get_absolute_url}}">{{post.title}}</a>
@@ -168,45 +164,6 @@
                     </div>
                     {% endif %}
                     
-                    <!--widget-instagram-->
-                    <div class="widget" data-aos="fade-up" data-aos-duration="3000">
-                        <div class="section-title">
-                            <h5>Instagram</h5>
-                        </div>
-                        <ul class="widget-instagram">
-                            <li>
-                                <a class="image" href="#">
-                                    <img src="{% static 'img/instagram/1.jpg' %}" alt="">
-                                </a>
-                            </li>
-                            <li>
-                                <a class="image" href="#">
-                                    <img src="{% static 'img/instagram/2.jpg' %}" alt="">
-                                </a>
-                            </li>
-                            <li>
-                                <a class="image" href="#">
-                                    <img src="{% static 'img/instagram/3.jpg' %}" alt="">
-                                </a>
-                            </li>
-                            <li>
-                                <a class="image" href="#">
-                                    <img src="{% static 'img/instagram/4.jpg' %}" alt="">
-                                </a>
-                            </li>
-                            <li>
-                                <a class="image" href="#">
-                                    <img src="{% static 'img/instagram/5.jpg' %}" alt="">
-                                </a>
-                            </li>
-                            <li>
-                                <a class="image" href="#">
-                                    <img src="{% static 'img/instagram/6.jpg' %}" alt="">
-                                </a>
-                            </li>
-                        </ul>
-                    
-                    </div>
                     <!--widget-tags-->
                     <div class="widget" data-aos="fade-up" data-aos-duration="3000">
                         <div class="section-title">
