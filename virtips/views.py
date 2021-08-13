@@ -1,5 +1,6 @@
+from blog.views import author
 from django.shortcuts import render, get_object_or_404
-from blog.models import Post
+from blog.models import Post, Author
 
 
 def home(request):
@@ -7,13 +8,14 @@ def home(request):
     posts = Post.published.order_by('-publish').exclude(featured=True)[:9]
     context = {
         'featured': featured,
-        'posts': posts
+        'posts': posts,
     }
     return render(request, 'index.html', context)
 
 
 def about(request):
-    return render(request, 'about.html', {})
+    authors = Author.objects.all()[:6]
+    return render(request, 'about.html', {'authors': authors})
 
 
 def contact(request):
