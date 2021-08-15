@@ -88,10 +88,13 @@ def post_detail(request, post, category_slug):
 def author(request, username):
     author_obj = get_object_or_404(Author, user__username=username)
     posts = Post.published.filter(author=author_obj).order_by('-publish')
+    paginator = Paginator(posts, 8)
+    page = request.GET.get('page')
+    paged_posts = paginator.get_page(page)
     post_count = posts.count()
     context = {
         'author': author_obj,
-        'posts': posts,
+        'posts': paged_posts,
         'post_count': post_count
     }
     return render(request, 'blog/author.html', context)
