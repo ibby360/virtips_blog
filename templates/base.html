@@ -24,6 +24,9 @@
     <!-- Font Google -->
     <link href="https://fonts.googleapis.com/css?family=Muli:300,400,500,600,700,800,900&amp;display=swap" rel="stylesheet">
 
+    <!-- Manifest File -->
+    <link rel="manifest" href="{% static 'site.webmanifest' %}">
+
     <!-- CSS Plugins -->
     <link rel="stylesheet" href="{% static 'css/all.css' %}">
     <link rel="stylesheet" href="{% static 'css/elegant-font-icons.css' %}">
@@ -63,7 +66,7 @@
                         <a class="nav-link {% active_link 'home' 'active' %}" href="{% url 'home' %}"> Home </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link {% active_link 'blog:post_list' 'active'%}" href="{% url 'blog:post_list' %}"> Articles </a>
+                        <a class="nav-link {% active_link 'blog:post_list || blog:post_by_category' 'active'%}" href="{% url 'blog:post_list' %}"> Articles </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link {% active_link 'about' 'active' %}" href="{% url 'about' %}"> About </a>
@@ -73,7 +76,7 @@
                     </li> {% endcomment %}
                     {% if user.is_authenticated %}
                     <li class="nav-item">
-                        <a class="nav-link {% active_link 'logout' 'active' %}" href="{% url 'logout' %}"> Logout </a>
+                        <a class="nav-link {% active_link 'dashboard' 'active' %}" href="{% url 'dashboard:dashboard' %}"> Dashboard </a>
                     </li>
                     {% else %}
                     <li class="nav-item">
@@ -141,7 +144,10 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="copyright">
-                        <p>© Copyright 2021 <a href="#">VirTips</a>, All rights reserved.</p>
+                        <p><a href="/">VirTips</a> © 
+                            <script type="text/javascript">document.write(new Date().getFullYear());</script>.
+                            Made with <i class='fa fa-heart text-danger'></i> by <a href="https://github.com/ibby360" target="_blank">Ibby360</a> 
+                        </p>
                     </div>
                     <div class="back">
                         <a href="#" class="back-top">
