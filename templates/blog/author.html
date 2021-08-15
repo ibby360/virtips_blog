@@ -94,27 +94,39 @@
                     </div>
         
                     <!--pagination-->
-                    <div class="pagination mt-30">
-                        <ul class="list-inline">
-                            <li class="active">
-                                <a href="#">1</a>
-                            </li>
-                            <li>
-                                <a href="#">2</a>
-                            </li>
-                            <li>
-                                <a href="#">3</a>
-                            </li>
-                            <li>
-                                <a href="#">4</a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <i class="arrow_carrot-2right"></i>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
+                    <div class="col-lg-12">
+                        <div class="pagination mt--10">
+                            
+                            {% if posts.has_other_pages %}
+                            <ul class="list-inline">
+                                {% if posts.has_previous %}
+                                <li>
+                                    <a href="?page={{posts.previous_page_number}}">
+                                        <i class="arrow_carrot-2left"></i>
+                                    </a>
+                                </li>
+                                {% endif %}
+                                {% for i in posts.paginator.page_range %}
+                                    {% if posts.number == i %}
+                                    <li class="active">
+                                        <a href="">{{i}}</a>
+                                    </li>
+                                    {% else %}
+                                    <li class="">
+                                        <a href="?page={{i}}">{{i}}</a>
+                                    </li>
+                                    {% endif %}
+                                {% endfor %}
+                                {% if posts.has_next %}
+                                <li>
+                                    <a href="?page={{posts.next_page_number}}">
+                                        <i class="arrow_carrot-2right"></i>
+                                    </a>
+                                </li>
+                                {% endif %}
+                            </ul>
+                            {% endif %}
+                        </div>
                     <!--/-->
                 </div>
                
