@@ -5,12 +5,11 @@
 <!-- Specific Page CSS goes HERE  -->
 
 {% block stylesheets %}
-    <link rel="stylesheet" href="{% static "dashboard/css/bootstrap-tagsinput.css" %}">
+
 {% endblock stylesheets %}
 {% block javascript %}
 	{{ block.super }}
-        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-        <script src="{% static 'dashboard/assets/js/bootstrap-tagsinput.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/jquery-3.5.0.min.js' %}"></script>
         <script type="text/javascript" src="{% static "ckeditor/ckeditor-init.js" %}"></script>
         <script type="text/javascript" src="{% static "ckeditor/ckeditor/ckeditor.js" %}"></script>
 {% endblock javascript %}
@@ -49,7 +48,7 @@
 										</div>
                                     </div>
                                     <div class="my-2 col-md-6">
-                                        <label for="exampleFormControlInput1" class="form-label">Tags</label>
+                                        <label for="tags" class="form-label">Tags</label>
                                         <input type="text" class="form-control" name="tags" id="tags" 
                                         value="{% for tag in post.tags.all %}{{ tag }}, {% endfor %}" placeholder="Example: sports, game, politics"
                                         data-role="tagsinput">
