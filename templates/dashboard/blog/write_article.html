@@ -3,9 +3,13 @@
 {% block title %} Write a New Article {% endblock %} 
 {% load static %}
 <!-- Specific Page CSS goes HERE  -->
+
+{% block stylesheets %}
+
+{% endblock stylesheets %}
 {% block javascript %}
 	{{ block.super }}
-        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+        <script type="text/javascript" src="{% static 'js/jquery-3.5.0.min.js' %}"></script>
         <script type="text/javascript" src="{% static "ckeditor/ckeditor-init.js" %}"></script>
         <script type="text/javascript" src="{% static "ckeditor/ckeditor/ckeditor.js" %}"></script>
 {% endblock javascript %}
@@ -29,7 +33,7 @@
 								{{form.media}}
                                 <div class="row g-3">
                                     <div class="my-2 col-md-6">
-                                        <label for="exampleFormControlInput1" class="form-label">Title</label>
+                                        <label for="title" class="form-label">Title</label>
                                         {{ form.title }}
                                     </div>
                                     <div class="my-2 col-md-6">
@@ -37,7 +41,7 @@
                                         {{ form.category }}
                                     </div>
                                     <div class="my-2 col-md-6">
-                                        <label for="exampleFormControlInput1" class="form-label">Tags</label>
+                                        <label for="tags" class="form-label">Tags</label>
                                         {{ form.tags }}
                                     </div>
                                     <div class="my-2 col-md-6">
@@ -49,7 +53,7 @@
                                         {{ form.overview }}
                                     </div>
                                     <div class="my-2 col-md-12">
-                                        {% comment %} <label for="textarea">Content</label> {% endcomment %}
+                                        <label for="textarea">Content</label>
                                         {{ form.body }}
                                     </div>
 									<div class="my-2 col-md-12">
