@@ -3,7 +3,7 @@
 
 <!-- Mta -->
 {% block meta-title %}{{ post.title }}{% endblock meta-title %}
-{% block meta-desc %}%}{{post.overview | truncatewords_html:30 }}{% endblock meta-desc %}
+{% block meta-desc %}{{post.overview | truncatewords_html:30 }}{% endblock meta-desc %}
 
 <!-- Og Meta Tags -->
 {% block og-type %}article{% endblock og-type %}
