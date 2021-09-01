@@ -169,7 +169,7 @@ def author_settings(request):
 
 
 @login_required(login_url='login')
-def author_profiile(request):
+def author_profile(request):
     authorprofile = get_object_or_404(Author, user=request.user)
     context = {
         'authorprofile': authorprofile
