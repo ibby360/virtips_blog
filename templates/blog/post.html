@@ -1,5 +1,24 @@
 {% extends 'base.html' %}
 {% block title %}{{post.title}} | VirTips {% endblock title %}
+
+<!-- Mta -->
+{% block meta-title %}{{ post.title }}{% endblock meta-title %}
+{% block meta-desc %}%}{{post.overview | truncatewords_html:30 }}{% endblock meta-desc %}
+
+<!-- Og Meta Tags -->
+{% block og-type %}article{% endblock og-type %}
+{% block og-url %}https://virtips.blog/{{ post.slug }}{% endblock og-url %}
+{% block og-title %} {{ post.title }} {% endblock og-title %}
+{% block og-desc %}{{post.overview | truncatewords_html:30 }}{% endblock og-desc %}
+{% block og-image %}{{ post.thumbnail.url }}{% endblock og-image %}
+
+<!-- Twitter Meta Tags -->
+{% block twitter-url %}https://virtips.blog/{{ post.slug }}{% endblock twitter-url %}
+{% block twitter-title %} {{ post.title }} {% endblock twitter-title %}
+{% block twitter-desc %}{{post.overview | truncatewords_html:30 }}{% endblock twitter-desc %}
+{% block twitter-image %}{{ post.thumbnail.url }}{% endblock twitter-image %}
+
+<!-- #################### -->
 {% load static %}
 {% block content %}
   
