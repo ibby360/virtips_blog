@@ -127,6 +127,9 @@
 		
 		<!-- Section Title -->
 		{% if recent_published_articles %}
+
+            {% include 'dashboard/includes/alert.html' %}
+			
 		<div class="py-4">
 			<h4>Recent Published Articles</h4>
 		</div>
@@ -153,13 +156,13 @@
 									<i class="fas fa-chevron-down" ></i>
 								</span>
 								<div class="dropdown-menu dashboard-dropdown dropdown-menu-start mt-2 py-1">
-									<a class="dropdown-item d-flex align-items-center" href="#">
+									<a class="dropdown-item d-flex align-items-center" href="{% url 'dashboard:edit-post' article.slug %}">
 										<span class="dropdown-icon text-gray-400 me-2 ">
 											<i class="fas fa-feather-alt"></i>
 										</span>
 									 Edit Article
 									</a>
-									<a class="dropdown-item d-flex align-items-center" href="#">
+									<a class="dropdown-item d-flex align-items-center" href="#" data-bs-toggle="modal" data-bs-target="#modal-notification">
 										<span class="dropdown-icon text-gray-400 me-2 ">
 											<i class="fas fa-trash-alt"></i>
 										</span>
@@ -205,5 +208,29 @@
 			</div>
 		</footer>
 	</main>
+
+	{% for article in recent_published_articles %}
+		<div class="col-lg-4">
+			<div class="modal fade" id="modal-notification" tabindex="-1" role="dialog" aria-labelledby="modal-notification" aria-hidden="true">
+			<div class="modal-dialog  modal-dialog-centered" role="document">
+				<div class="modal-content bg-gray-800">
+				<button type="button" class="btn-close theme-settings-close fs-6 ms-auto" data-bs-dismiss="modal" aria-label="Close"></button>
+				  	<div class="modal-header border-0">
+				  	</div>
+				  	<div class="modal-body text-white">
+						<div class="py-3 text-center">
+							<span class="modal-icon">
+								<i class="fas fa-exclamation-triangle fa-3x text-gray-200"></i>
+							</span>
+						  <h2 class="h4 modal-title my-3">Are you sure?</h2>
+						  <p>Are you sure you want to delete the Post "{{article.title}}"? All of the related items will be deleted.</p>
+						  <a href="{% url 'dashboard:delete-post' article.slug %}" class="btn btn-sm btn-white">Yes, I'm sure</a>
+						</div>
+				  	</div>
+				</div>
+			  </div>
+			</div>
+		</div>
+		{% endfor %}
 
 {% endblock content%}
