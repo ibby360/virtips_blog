@@ -1,6 +1,6 @@
 {% extends "dashboard/layouts/base.html" %}
 
-{% block title %} Dashboard {% endblock %} 
+{% block title %} {{ request.user.username }}'s Dashboard {% endblock %} 
 {% load static %}
 <!-- Specific Page CSS goes HERE  -->
 {% block stylesheets %}{% endblock stylesheets %}
