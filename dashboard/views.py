@@ -6,6 +6,7 @@ from django.contrib.auth.decorators import login_required
 from dashboard.forms import ArticleCreateForm, CategoryForm, UserForm, AuthorProfileForm
 from django.contrib import messages
 from django.utils import timezone
+from taggit.models import Tag
 
 
 # Create your views here.
@@ -175,3 +176,12 @@ def author_profile(request):
         'authorprofile': authorprofile
     }
     return render(request, 'dashboard/profile/profile.html', context)
+
+
+@login_required(login_url='login')
+def tags_view(request):
+    tags = Tag.objects.all()
+    context = {
+        'tags': tags
+    }
+    return render(request, 'dashboard/blog/tags.html', context)
