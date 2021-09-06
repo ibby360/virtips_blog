@@ -1,6 +1,6 @@
 {% extends "dashboard/layouts/base.html" %}
 
-{% block title %} Write a New Article {% endblock %} 
+{% block title %} Update {{ post.title }} {% endblock %} 
 {% load static %}
 <!-- Specific Page CSS goes HERE  -->
 
@@ -24,7 +24,7 @@
             <section class="py-5">
                 {% include 'dashboard/includes/alert.html' %}
 				<div class="pb-2">
-					<h4>Write A New Article</h4>
+					<h4>Update Article</h4>
 				</div>
                 <div class="card border-0 shadow mx-auto">
                     <div class="card-body mt-2">
@@ -71,6 +71,12 @@
 									<div class="my-2 col-md-12">
                                         <label class="my-1 me-2" for="state">Status</label>
                                         {{ form.status }}
+                                    </div>
+                                    <div class="my-2 col-md-12">
+                                        <div class="form-check">
+                                            <label class="form-check-label" for="defaultCheck10">Featured</label>
+                                            {{ form.featured }}
+                                        </div>
                                     </div>
 									<div class="input-group float-start">
 										<div class="my-2 pe-2">
