@@ -1,5 +1,5 @@
 from django import forms
-from django.forms import TextInput, FileInput, Select
+from django.forms import TextInput, FileInput, Select, BooleanField
 from django.forms.widgets import Textarea
 from ckeditor_uploader.widgets import CKEditorUploadingWidget
 
@@ -20,13 +20,21 @@ class ArticleCreateForm(forms.ModelForm):
     )
     )
 
+    featured = forms.BooleanField(required=False, widget=forms.CheckboxInput(
+        attrs={
+            'class': 'form-check-input',
+            'type': 'checkbox',
+
+        }
+    ))
+
     class Meta:
         STATUS_CHOICES = (
             ('draft', 'Draft'),
             ('published', 'Published'),
         )
         model = Post
-        fields = ['title', 'category', 'tags', 'thumbnail', 'overview', 'body', 'status']
+        fields = ['title', 'category', 'tags', 'thumbnail', 'overview', 'body', 'status', 'featured']
 
         widgets = {
             'title': TextInput(attrs={
@@ -78,6 +86,7 @@ class ArticleCreateForm(forms.ModelForm):
                                  "title": "Select Status"
                              }
                              ),
+      
         }
 
 class CategoryForm(forms.ModelForm):
