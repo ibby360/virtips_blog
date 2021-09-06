@@ -22,43 +22,42 @@
 						Add New..
 					</button>
 					<div class="dropdown-menu dashboard-dropdown dropdown-menu-start mt-2 py-1">
-						<a class="dropdown-item d-flex align-items-center" href="{% url 'dashboard:article-create' %}">
+						<a class="dropdown-item d-flex align-items-center" href="write_article.html">
 							<span class="dropdown-icon text-gray-400 me-2 ">
 								<i class="fas fa-feather-alt"></i>
 							</span>
 						 Add Article
 						</a>
-						<a class="dropdown-item d-flex align-items-center" data-bs-toggle="modal" data-bs-target="#modalCategory">
+						<a class="dropdown-item d-flex align-items-center" data-bs-toggle="modal" data-bs-target="#modalTag">
 							<span class="dropdown-icon text-gray-400 me-2 ">
-								<i class="fas fa-layer-group"></i>
+								<i class="fas fa-tags"></i>
 							</span>
-							 Add Category
+							 Add Tag
 						</a>
 					</div>
 				</div>
 			</div>
 			<!-- xxxxxxxxxxxx -->
-			{% include 'dashboard/includes/alert.html' %}
 
 			<!-- Table Card -->
-			<div class="card border-0 shadow mx-auto pt-2">
+			<div class="card border-0 shadow mx-auto">
 				<div class="card-body">
 					<div class="table-responsive">
 						<table class="table table-centered table-nowrap mb-0 rounded" >
 							<thead class="thead-light">
 								<tr>
-									<th class="border-0 rounded-start" id="category">Category</th>
+									<th class="border-0 rounded-start" id="category">Tag</th>
 									<th class="border-0" id="edit">Edit</th>
 									<th class="border-0 rounded-end" id="delete">Delete</th>
 								</tr>
 							</thead>
 							<tbody>
-								{% for category in categories %}
 								<!-- Item -->
+								{% for tag in tags %}
 								<tr>
 									<td class="border-0">
 										<a href="#" class="d-flex align-items-center">
-											<div><span class="h6">{{ category.category_name }}</span></div>
+											<div><span class="h6">{{ tag.name }}</span></div>
 										</a>
 									</td>
 									<td class="border-0 font-weight-bold">
@@ -85,19 +84,17 @@
 
         </main>
 
-		
 		<!-- Modal Content -->
-		<div class="modal fade" id="modalCategory" tabindex="-1" role="dialog" aria-labelledby="modalTitleCategory" aria-hidden="true">
+		<div class="modal fade" id="modalTag" tabindex="-1" role="dialog" aria-labelledby="modalTitleTag" aria-hidden="true">
 			<div class="modal-dialog modal-dialog-centered modal-lg" role="document">
 				<div class="modal-content py-xl-4">
 					<div class="modal-body text-center py-3">
-						<i class="fas fa-layer-group fa-3x"></i>
-						<h3 class="modal-title mb-3" id="modalTitleCategory">Add New Category</h3>
+						<i class="fas fa-tags fa-3x"></i>
+						<h3 class="modal-title mb-3" id="modalTitleTag">Add New Tag</h3>
 						<div class="form-group px-lg-5">
-							<form method="POST" enctype="multipart/form-data">
-								{% csrf_token %}
+							<form action="">
 								<div class="d-flex mb-3 justify-content-center">
-									{{ form.category_name }}
+									<input type="text" id="tag" class="me-sm-1 mb-sm-0 form-control form-control-lg border-gray-300" placeholder="example: Fashion, Financial, Travel...">
 									<div>
 										<button type="submit" class="ms-2 btn large-form-btn btn-primary">Save</button>
 									</div>
@@ -109,6 +106,4 @@
 			</div>
 		</div>
 		<!-- End of Modal Content -->
-
-		
-{% endblock content %}
+		{% endblock content %}
