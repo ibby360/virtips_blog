@@ -13,4 +13,5 @@ urlpatterns = [
     path('me/edit/<slug:slug>/', views.edit_blog_post, name='edit-post'),
     path('me/delete/<slug:slug>/', views.delete_post, name='delete-post'),
     path('me/add/category/', views.create_category, name='add-category'),
+    path('me/add/tag/', views.tags_view, name='add-tag')
 ]
