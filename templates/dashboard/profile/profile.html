@@ -22,7 +22,7 @@
 						Add New..
 					</button>
 					<div class="dropdown-menu dashboard-dropdown dropdown-menu-start mt-2 py-1">
-						<a class="dropdown-item d-flex align-items-center" href="write_article.html">
+						<a class="dropdown-item d-flex align-items-center" href="{% url 'dashboard:article-create' %}">
 							<span class="dropdown-icon text-gray-400 me-2 ">
 								<i class="fas fa-feather-alt"></i>
 							</span>
@@ -38,6 +38,8 @@
 				</div>
 			</div>
 			<!-- xxxxxxxxxxxx -->
+			
+			{% include 'dashboard/includes/alert.html' %}
 
 			<section class="mb-4">
 				<div class="card border-0 shadow mx-auto">
@@ -49,7 +51,7 @@
 							<img src="{{ authorprofile.avatar.url }}" class="avatar-xl rounded-circle mx-auto mt-n7 mb-4" alt="">
 							<h4 class="h3">{{ authorprofile.full_name| title  }}</h4>
 							<h5 class="fw-normal">{{ authorprofile.jobtitle | title }}</h5>
-							<p class="text-gray">{{ authorprofile.city | title }}, {{ authorprofile.country | title }}</p>
+							<p class="text-gray">{{ authorprofile.city | title }}, {{ authorprofile.country.name | title }}</p>
 							<a href="{% url 'dashboard:author-settings' %}" class="btn btn-sm btn-gray-800 d-inline-flex align-items-center me-2">
 								<i class="fas fa-user-edit icon-xs me-1"></i> Update Profile
 							</a>
@@ -72,7 +74,7 @@
 									<h3 class="h5">Gender: <span class="text-gray lead">{{ authorprofile.gender | capfirst }}</span></h3>
 									<h3 class="h5">Job Title: <span class="text-gray lead">{{ authorprofile.jobtitle | title }}</span></h3>
 									<h3 class="h5">City: <span class="text-gray lead">{{ authorprofile.city | title }}</span></h3>
-									<h3 class="h5">Country: <span class="text-gray lead">{{ authorprofile.country | title }}</span></h3>
+									<h3 class="h5">Country: <span class="text-gray lead">{{ authorprofile.country.name | title }}</span></h3>
 									
 								</div>
 							</div>
