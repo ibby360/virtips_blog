@@ -2,6 +2,7 @@ asgiref==3.4.1
 Django==3.2.5
 django-active-link==0.1.8
 django-ckeditor==6.1.0
+django-countries==7.2.1
 django-environ==0.4.5
 django-js-asset==1.2.2
 django-taggit==1.5.1
