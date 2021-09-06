@@ -9,6 +9,7 @@ from ckeditor.fields import RichTextField
 from ckeditor_uploader.fields import RichTextUploadingField
 from taggit.managers import TaggableManager
 from category.models import Category 
+from django_countries.fields import CountryField
 
 # Create your models here.
 class PublishedManager(models.Manager):
@@ -21,13 +22,6 @@ class Author(models.Model):
         ('female', 'Female'),
     )
 
-    COUNTRIES = (
-        ('kenya', 'Kenya'),
-        ('netherlands', 'Netherlands'),
-        ('south africa', 'South Africa'),
-        ('tanzania', 'Tanzania'),
-        ('uganda', 'Uganda'),
-    )
     user = models.OneToOneField(settings.AUTH_USER_MODEL,on_delete=models.CASCADE, related_name='profile')
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50, blank=True, default='')
@@ -37,11 +31,11 @@ class Author(models.Model):
     avatar = models.ImageField(upload_to='avatars', default='avatars/default-profile.png')
     cover_photo = models.ImageField(upload_to='profile', blank=True, default='profile/profile-cover.jpg')
     city = models.CharField(max_length=150, blank=True)
-    country = models.CharField(max_length=150, choices=COUNTRIES, default='')
-    facebook_url = models.CharField(max_length=50, blank=True, default='#')
-    instagram_url = models.CharField(max_length=50, blank=True, default='#')
-    twitter_url = models.CharField(max_length=50, blank=True, default='#')
-    linkedin_url = models.CharField(max_length=50, blank=True, default='#')
+    country = CountryField()
+    facebook_url = models.CharField(max_length=50, blank=True)
+    instagram_url = models.CharField(max_length=50, blank=True)
+    twitter_url = models.CharField(max_length=50, blank=True)
+    linkedin_url = models.CharField(max_length=50, blank=True)
 
     def __str__(self):
         return self.user.username
