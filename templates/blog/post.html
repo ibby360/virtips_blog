@@ -33,7 +33,7 @@
                             <img src="{{post.thumbnail.url}}" alt="">
                         </div>
                         <div class="post-single-content">
-                            <a href="blog-grid.html" class="categorie">travel</a> 
+                            <a href="{{ post.category.get_absolute_url }}" class="categorie">travel</a> 
                             <h4>{{post.title}}</h4>
                             <div class="post-single-info">
                                 <ul class="list-inline">
