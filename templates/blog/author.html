@@ -10,7 +10,7 @@
                 <div class="col-lg-12">
                     <!--widget-author-->
                     <div class="widget-author inner-width">
-                        <a href="author.html" class="image">
+                        <a href="{% url 'blog:author' author.user.username%}" class="image">
                             <img src="{{author.avatar.url}}" alt="">
                         </a>
                         <h6><span>Hi, I'm {{author.full_name}}</span></h6>
