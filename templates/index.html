@@ -32,7 +32,7 @@
                                         <li class="dot"></li>
                                         <li>{{post.publish | date}}</li>
                                         <li class="dot"></li>
-                                        <li>3 comments</li>
+                                        <li>{{ post.comments.count }} comment{{ post.comments | pluralize }}</li>
                                     </ul>
                                 </div>
                             </div>
