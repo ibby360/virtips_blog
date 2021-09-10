@@ -2373,9 +2373,11 @@ input:checked + .slider:before {
     display: inline-block;
     width: 100%;
   }
-  .navbar-right .social-icones,
-  .navbar-right .search-icon {
+  .navbar-right .social-icones {
     display: none;
+  }
+  .navbar-right .search-icon {
+    margin-left: 1rem;
   }
   .theme-switch-wrapper {
     margin-right: 0px;
