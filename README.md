@@ -24,6 +24,25 @@
 ### Homepage
 ![Screenshot_2021-09-22 Virtips Blog](https://user-images.githubusercontent.com/51038084/134327416-78a32bf4-8179-4900-b6d2-9607387a0f0a.png)
 
+## Features
+- Clean Code
+- Articles Search
+- Article Social Media Share
+- Article Minute Read
+- Article Number of Views
+- Article Tags
+- Dashboard for Authors
+- WYSIWYG Editor
+- Account Verification
+- Author Login
+- Author Password Reset
+- Category Articles List
+- New Category Submission
+- Previous Article
+- Next Article
+- Comments
+- Responsive on all devices
+- Pagination
 
 ## Status
 In Development 🚧 
