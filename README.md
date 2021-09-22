@@ -11,6 +11,20 @@
 
 ### ✨ [Demo](https://ibby.pythonanywhere.com)
 
+## Screenshots
+### Author's Dashboard
+![Screenshot_2021-09-22 ibby's Dashboard VirTips](https://user-images.githubusercontent.com/51038084/134326860-1b808a11-d070-4966-b44e-0b168b6b0e51.png)
+
+### Authoe's Settings
+![Screenshot_2021-09-22 Update Your Profile VirTips](https://user-images.githubusercontent.com/51038084/134327223-cbc36f48-f0ff-48e1-9c6d-46938cd0e447.png)
+
+### Author's Profile
+![Screenshot_2021-09-22 ibby's Profile VirTips](https://user-images.githubusercontent.com/51038084/134327336-805f149a-0e94-47e9-8116-23de2c3eb40b.png)
+
+### Homepage
+![Screenshot_2021-09-22 Virtips Blog](https://user-images.githubusercontent.com/51038084/134327416-78a32bf4-8179-4900-b6d2-9607387a0f0a.png)
+
+
 ## Status
 In Development 🚧 
 
