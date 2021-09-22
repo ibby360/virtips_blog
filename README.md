@@ -15,7 +15,7 @@
 ### Author's Dashboard
 ![Screenshot_2021-09-22 ibby's Dashboard VirTips](https://user-images.githubusercontent.com/51038084/134326860-1b808a11-d070-4966-b44e-0b168b6b0e51.png)
 
-### Authoe's Settings
+### Author's Settings
 ![Screenshot_2021-09-22 Update Your Profile VirTips](https://user-images.githubusercontent.com/51038084/134327223-cbc36f48-f0ff-48e1-9c6d-46938cd0e447.png)
 
 ### Author's Profile
@@ -92,7 +92,7 @@ This project is based on the goal of improving my skills as a Self-taught enthus
 
 ## 🤝 Contributing
 
-Contributions, issues and feature requests are welcome!<br />Feel free to check [issues page](https://github.com/ibby360/virtips_blog/issues). You can also take a look at the [contributing guide](https://github.com/ibby360/virtips_blog/blob/master/CONTRIBUTING.md).
+Contributions, issues and feature requests are welcome!<br />Feel free to check [issues page](https://github.com/ibby360/virtips_blog/tree/master/.github/ISSUE_TEMPLATE). You can also take a look at the [contributing guide](https://github.com/ibby360/virtips_blog/blob/master/CONTRIBUTING.md).
 
 
 ## Show your support
