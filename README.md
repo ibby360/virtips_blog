@@ -10,6 +10,8 @@
 ### 🏠 [Homepage](https://github.com/ibby360/virtips_blog)
 
 ### ✨ [Demo](https://ibby.pythonanywhere.com)
+- Email - hociva7428@epeva.com
+- Password - demo12345
 
 ## Screenshots
 ### Author's Dashboard

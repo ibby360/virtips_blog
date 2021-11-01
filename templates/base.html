@@ -92,12 +92,14 @@
                     <li class="nav-item">
                         <a class="nav-link {% active_link 'about' 'active' %}" href="{% url 'about' %}"> About </a>
                     </li>
-                    {% comment %} <li class="nav-item">
-                        <a class="nav-link {% active_link 'contact' 'active' %}" href="{% url 'contact' %}"> Contact </a>
-                    </li> {% endcomment %}
+                    
                     {% if user.is_authenticated %}
                     <li class="nav-item">
                         <a class="nav-link {% active_link 'dashboard' 'active' %}" href="{% url 'dashboard:dashboard' %}"> Dashboard </a>
+                    </li>
+                    {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link {% active_link 'login' 'active' %}" href="{% url 'login' %}"> Login </a>
                     </li>
                     {% endif %}
                 </ul>
