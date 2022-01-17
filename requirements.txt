@@ -1,5 +1,5 @@
 asgiref==3.4.1
-Django==3.2.5
+Django==3.2.11
 django-active-link==0.1.8
 django-ckeditor==6.1.0
 django-countries==7.2.1
